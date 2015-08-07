@@ -1,0 +1,36 @@
+{%- extends "basic/layout.html" %}
+{%- block extrahead %}
+  {{ super() }}
+  {% if pagename.endswith('/index') %}
+    {% set href = pagename[:-5] %}
+  {% elif pagename == 'index' %}
+    {% set href = '' %}
+  {% else %}
+    {% set href = pagename + '/' %}
+  {% endif %}
+  <link rel="canonical" href="{{ pathto(master_doc).rstrip('#/') or '.' }}/../latest/{{ href }}">
+  <link media="only screen and (max-device-width: 480px)" href="{{
+    pathto('_static/small.css', 1) }}" type= "text/css" rel="stylesheet" />
+{% endblock %}
+{%- block relbar2 %}{% endblock %}
+{% block header %}
+  {{ super() }}
+  {% if pagename == 'index' %}
+  <div class=indexwrapper>
+  {% endif %}
+{% endblock %}
+{%- block document %}
+  {% if documentation_version_warning %}
+    <p class=version-warning><strong>Warning:</strong> {{ documentation_version_warning }}</p>
+  {% endif %}
+  {{ super() }}
+{% endblock %}
+{%- block footer %}
+    <div class="footer">
+      &copy; Copyright {{ copyright }}.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+    </div>
+  {% if pagename == 'index' %}
+  </div>
+  {% endif %}
+{%- endblock %}

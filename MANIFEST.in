@@ -1,0 +1,10 @@
+include *.txt
+include LICENSE
+recursive-include pocoo_sphinx_themes *.conf
+recursive-include pocoo_sphinx_themes *.css
+recursive-include pocoo_sphinx_themes *.eot
+recursive-include pocoo_sphinx_themes *.html
+recursive-include pocoo_sphinx_themes *.js
+recursive-include pocoo_sphinx_themes *.svg
+recursive-include pocoo_sphinx_themes *.ttf
+recursive-include pocoo_sphinx_themes *.woff

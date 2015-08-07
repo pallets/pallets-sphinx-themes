@@ -1,0 +1,26 @@
+@import url(pocoo.css);
+@import url(http://fonts.googleapis.com/css?family=Ubuntu);
+
+/* fonts */
+body                        { font-family: 'Lucida Grande', 'Lucida Sans Unicode',
+                              'Geneva', 'Verdana', sans-serif; font-size: 15px; }
+div.admonition p.admonition-title, div.sphinxsidebar h3, div.sphinxsidebar h4,
+  div.sphinxsidebar input, div.body h1, div.body h2, div.body h3, div.body h4,
+  div.body h5, div.body h6  { font-family: 'Ubuntu', 'Lucida Grande', sans-serif; }
+div.body h1, div.body h2, div.body h3, div.body h4,
+  div.body h5, div.body h6  { color: black; }
+pre, tt                     { font-family: 'Consolas', 'Menlo', 'Deja Vu Sans Mono',
+                              'Bitstream Vera Sans Mono', monospace;
+                              font-size: 0.9em; }
+ 
+/* colors */
+div.body                    { color: #3E4349; }
+a                           { color: #185F6D; }
+a:hover                     { color: #2794AA; }
+p.version-warning           { background-color: #FF8C08; }
+a.reference                 { border-bottom: 1px dotted #2BABC4; }
+a.footnote-reference        { border-bottom: 1px dotted #004B6B; }
+a.footnote-reference:hover  { border-bottom: 1px solid #6D4100; }
+tt                          { background-color: #E8EFF0; color: #222; }
+tt.xref, a tt               { background-color: #E8EFF0;
+                              border-bottom: 1px solid white; }

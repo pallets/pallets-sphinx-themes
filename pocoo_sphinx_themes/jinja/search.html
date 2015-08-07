@@ -1,0 +1,14 @@
+{%- extends "layout.html" %}
+{% from "customsearch.html" import render_gcs, render_gcs_style %}
+{% set title = _('Search') %}
+{% block body %}
+  <h1 id="search-documentation">Search</h1>
+  {{ render_gcs('012722186170730423054:x6ckmmrakfw') }}
+  {{ render_gcs_style(
+    font_family="'Georgia', serif",
+    primary_color='#aa0000',
+    secondary_color='#dd0000',
+    link_hover_color='#dd0000',
+    highlight_color='#E8EFF0'
+  ) }}
+{% endblock %}
