@@ -2,6 +2,7 @@ include *.txt
 include LICENSE
 recursive-include pocoo_sphinx_themes *.conf
 recursive-include pocoo_sphinx_themes *.css
+recursive-include pocoo_sphinx_themes *.css_t
 recursive-include pocoo_sphinx_themes *.eot
 recursive-include pocoo_sphinx_themes *.html
 recursive-include pocoo_sphinx_themes *.js
