@@ -1,11 +1,7 @@
-include *.txt
 include LICENSE
-recursive-include pocoo_sphinx_themes *.conf
-recursive-include pocoo_sphinx_themes *.css
-recursive-include pocoo_sphinx_themes *.css_t
-recursive-include pocoo_sphinx_themes *.eot
-recursive-include pocoo_sphinx_themes *.html
-recursive-include pocoo_sphinx_themes *.js
-recursive-include pocoo_sphinx_themes *.svg
-recursive-include pocoo_sphinx_themes *.ttf
-recursive-include pocoo_sphinx_themes *.woff
+graft pallets_sphinx_themes/pocoo
+graft pallets_sphinx_themes/flask
+graft pallets_sphinx_themes/jinja
+graft pallets_sphinx_themes/werkzeug
+graft pallets_sphinx_themes/click
+global-exclude *.py[co]

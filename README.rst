@@ -1,8 +1,20 @@
-The Pocoo Sphinx Themes
-=======================
+Pallets Sphinx Themes
+=====================
 
-Usage::
+Themes for the Pallets projects. If you're writing an extension, use the
+appropriate theme to make your documentation look consistent.
 
-    html_theme_path = [pocoo_sphinx_themes.get_html_theme_path()]
-    html_theme = 'click'
-    pygments_style = 'pocoo_sphinx_themes.pocoo.PocooStyle'
+Available themes:
+
+* flask
+* jinja
+* werkzeug
+* click
+
+Install this package::
+
+    pip install Pallets-Sphinx-Themes
+
+Then choose the theme in ``docs/conf.py``::
+
+    html_theme = 'flask'
