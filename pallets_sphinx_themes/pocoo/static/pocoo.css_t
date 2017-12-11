@@ -1,10 +1,10 @@
 {% set page_width = '940px' %}
 {% set sidebar_width = '220px' %}
- 
+
 @import url("basic.css");
- 
+
 /* -- page layout ----------------------------------------------------------- */
- 
+
 body {
     font-family: sans-serif;
     font-size: 17px;
@@ -35,12 +35,12 @@ div.sphinxsidebar {
 hr {
     border: 1px solid #B1B4B6;
 }
- 
+
 div.body {
     background-color: #ffffff;
     padding: 0 30px 0 30px;
 }
- 
+
 div.footer {
     width: {{ page_width }};
     margin: 20px auto 30px auto;
@@ -56,7 +56,7 @@ div.footer a {
 div.related {
     display: none;
 }
- 
+
 div.sphinxsidebar a {
     color: #444;
     text-decoration: none;
@@ -66,7 +66,7 @@ div.sphinxsidebar a {
 div.sphinxsidebar a:hover {
     border-bottom: 1px solid #999;
 }
- 
+
 div.sphinxsidebar {
     font-size: 14px;
     line-height: 1.5;
@@ -81,7 +81,7 @@ div.sphinxsidebarwrapper p.logo {
     margin: 0;
     text-align: center;
 }
- 
+
 div.sphinxsidebar h3,
 div.sphinxsidebar h4 {
     color: #444;
@@ -94,7 +94,7 @@ div.sphinxsidebar h4 {
 div.sphinxsidebar h4 {
     font-size: 20px;
 }
- 
+
 div.sphinxsidebar h3 a {
     color: #444;
 }
@@ -105,7 +105,7 @@ div.sphinxsidebar p.logo a:hover,
 div.sphinxsidebar h3 a:hover {
     border: none;
 }
- 
+
 div.sphinxsidebar p {
     color: #555;
     margin: 10px 0;
@@ -116,7 +116,7 @@ div.sphinxsidebar ul {
     padding: 0;
     color: #000;
 }
- 
+
 div.sphinxsidebar input {
     border: 1px solid #ccc;
     font-size: 1em;
@@ -164,11 +164,11 @@ p.version-warning {
         transparent
     );
 }
- 
+
 /* -- body styles ----------------------------------------------------------- */
 
 a { text-decoration: underline; }
- 
+
 div.body h1,
 div.body h2,
 div.body h3,
@@ -179,25 +179,25 @@ div.body h6 {
     margin: 30px 0px 10px 0px;
     padding: 0;
 }
- 
+
 div.body h1 { margin-top: 0; padding-top: 0; font-size: 240%; }
 div.body h2 { font-size: 180%; }
 div.body h3 { font-size: 150%; }
 div.body h4 { font-size: 130%; }
 div.body h5 { font-size: 100%; }
 div.body h6 { font-size: 100%; }
- 
+
 a.headerlink {
     color: #ddd;
     padding: 0 4px;
     text-decoration: none;
 }
- 
+
 a.headerlink:hover {
     color: #444;
     background: #eaeaea;
 }
- 
+
 div.body p, div.body dd, div.body li {
     line-height: 1.4em;
 }
@@ -210,7 +210,7 @@ div.admonition {
     border-bottom: 1px solid #ccc;
 }
 
-div.admonition tt.xref, div.admonition a tt {
+div.admonition code.xref, div.admonition a code {
     border-bottom: 1px solid #fafafa;
 }
 
@@ -243,25 +243,25 @@ div.note {
     background-color: #eee;
     border: 1px solid #ccc;
 }
- 
+
 div.seealso {
     background-color: #ffc;
     border: 1px solid #ff6;
 }
- 
+
 div.topic {
     background-color: #eee;
 }
- 
+
 p.admonition-title {
     display: inline;
 }
- 
+
 p.admonition-title:after {
     content: ":";
 }
 
-pre, tt {
+pre, code {
     font-family: 'Consolas', 'Menlo', 'Deja Vu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
     font-size: 0.9em;
 }
@@ -269,11 +269,11 @@ pre, tt {
 img.screenshot {
 }
 
-tt.descname, tt.descclassname {
+code.descname, code.descclassname {
     font-size: 0.95em;
 }
 
-tt.descname {
+code.descname {
     padding-right: 0.08em;
 }
 
@@ -350,7 +350,7 @@ ul, ol {
     margin: 10px 0 10px 30px;
     padding: 0;
 }
- 
+
 pre {
     background: #eee;
     padding: 7px 30px;
@@ -367,14 +367,14 @@ dl dl pre {
     margin-left: -90px;
     padding-left: 90px;
 }
- 
-tt {
+
+code {
     background-color: #ecf0f3;
     color: #222;
     /* padding: 1px 2px; */
 }
 
-tt.xref, a tt {
+code.xref, a code {
     background-color: #FBFBFB;
     border-bottom: 1px solid white;
 }
@@ -389,6 +389,6 @@ a.footnote-reference {
     vertical-align: top;
 }
 
-a:hover tt {
+a:hover code {
     background: #EEE;
 }

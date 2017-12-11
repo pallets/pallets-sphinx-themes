@@ -30,10 +30,10 @@ setup(
     entry_points={
         'sphinx.html_themes': [
             'pocoo = pallets_sphinx_themes',
-            'flask = flask_sphinx_themes',
-            'jinja = flask_sphinx_themes',
-            'werkzeug = flask_sphinx_themes',
-            'click = flask_sphinx_themes',
+            'flask = pallets_sphinx_themes',
+            'jinja = pallets_sphinx_themes',
+            'werkzeug = pallets_sphinx_themes',
+            'click = pallets_sphinx_themes',
         ],
         'pygments.styles': [
             'pocoo = pallets_sphinx_themes.pocoo:PocooStyle',

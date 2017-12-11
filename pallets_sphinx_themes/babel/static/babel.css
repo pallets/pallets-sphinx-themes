@@ -35,13 +35,6 @@ code.xref, a code           { background-color: #E8EFF0;
 /* special elements */
 div.indexwrapper h1 {
     text-indent: -999999px;
-    background: url(click.png) no-repeat center center;
+    background: url(babel.png) no-repeat center center;
     height: 200px;
-}
-
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    div.indexwrapper h1 {
-        background: url(click@2x.png) no-repeat center center;
-        background-size: 420px 175px;
-    }
 }

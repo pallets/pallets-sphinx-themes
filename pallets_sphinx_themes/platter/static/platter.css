@@ -8,7 +8,7 @@ div.admonition p.admonition-title, div.sphinxsidebar h3, div.sphinxsidebar h4,
   div.body h5, div.body h6  { font-family: 'Bitter', sans-serif; font-weight: normal; }
 div.body h1, div.body h2, div.body h3, div.body h4,
   div.body h5, div.body h6  { color: black; }
-pre, tt                     { font-family: 'Fiora Mono', monospace;
+pre, code                   { font-family: 'Fiora Mono', monospace;
                               font-size: 16px; background: transparent; }
 pre, * pre                  { padding: 7px 0 7px 30px!important;
                               margin: 15px 0!important;
@@ -23,8 +23,8 @@ a.reference                 { border-bottom: 1px dotted #d1952c; }
 a.reference:hover           { border-bottom: 1px solid #ab7311; }
 a.footnote-reference        { border-bottom: 1px dotted #d1952c; }
 a.footnote-reference:hover  { border-bottom: 1px solid #ab7311; }
-a:hover tt                  { background-color: #eeeeee; }
-tt.xref, a tt               { background-color: #E8EFF0;
+a:hover code                { background-color: #eeeeee; }
+code.xref, a code           { background-color: #E8EFF0;
                               border-bottom: 1px solid white; }
 
 /* special elements */

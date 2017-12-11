@@ -5,10 +5,10 @@ body                        { font-family: 'Georgia', serif; }
 div.admonition p.admonition-title, div.sphinxsidebar h3, div.sphinxsidebar h4,
   div.sphinxsidebar input, div.body h1, div.body h2, div.body h3, div.body h4,
   div.body h5, div.body h6  { font-family: 'Garamond', 'Georgia', serif; }
-pre, tt                     { font-family: 'Consolas', 'Menlo', 'Deja Vu Sans Mono',
+pre, code                   { font-family: 'Consolas', 'Menlo', 'Deja Vu Sans Mono',
                               'Bitstream Vera Sans Mono', monospace;
                               font-size: 0.9em; }
- 
+
 /* colors */
 div.body                    { color: #3E4349; }
 a                           { color: #004B6B; }
@@ -25,7 +25,7 @@ img.floatingflask           { padding: 0 0 10px 10px; float: right; }
 /* special elements */
 div.indexwrapper h1 {
     text-indent: -999999px;
-    background: url(flask-sqlalchemy.png) no-repeat center center;
+    background: url(flask-sqlalchemy-title.png) no-repeat center center;
     height: 120px;
 }
 

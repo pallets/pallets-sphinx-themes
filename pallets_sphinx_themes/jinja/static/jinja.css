@@ -8,7 +8,7 @@ div.admonition p.admonition-title, div.sphinxsidebar h3, div.sphinxsidebar h4,
   div.body h5, div.body h6  { font-family: 'Crimson Text', 'Georgia', serif; }
 div.body h1, div.body h2, div.body h3, div.body h4,
   div.body h5, div.body h6  { color: black; }
-pre, tt                     { font-family: 'Consolas', 'Menlo', 'Deja Vu Sans Mono',
+pre, code                   { font-family: 'Consolas', 'Menlo', 'Deja Vu Sans Mono',
                               'Bitstream Vera Sans Mono', monospace;
                               font-size: 0.9em; }
  
@@ -21,6 +21,6 @@ a.reference                 { border-bottom: 1px dotted #bb0000; }
 a.reference:hover           { border-bottom: 1px solid #dd0000; }
 a.footnote-reference        { border-bottom: 1px dotted #bb0000; }
 a.footnote-reference:hover  { border-bottom: 1px solid #dd0000; }
-a:hover tt                  { background-color: #eeeeee; }
-tt.xref, a tt               { background-color: #E8EFF0;
+a:hover code                { background-color: #eeeeee; }
+code.xref, a code           { background-color: #E8EFF0;
                               border-bottom: 1px solid white; }
