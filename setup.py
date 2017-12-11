@@ -34,6 +34,9 @@ setup(
             'jinja = pallets_sphinx_themes',
             'werkzeug = pallets_sphinx_themes',
             'click = pallets_sphinx_themes',
+            'babel = pallets_sphinx_themes',
+            'platter = pallets_sphinx_themes',
+            'flask-sqlalchemy = pallets_sphinx_themes',
         ],
         'pygments.styles': [
             'pocoo = pallets_sphinx_themes.pocoo:PocooStyle',

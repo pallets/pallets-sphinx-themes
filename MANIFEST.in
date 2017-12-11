@@ -1,7 +1,3 @@
 include LICENSE
-graft pallets_sphinx_themes/pocoo
-graft pallets_sphinx_themes/flask
-graft pallets_sphinx_themes/jinja
-graft pallets_sphinx_themes/werkzeug
-graft pallets_sphinx_themes/click
+graft pallets_sphinx_themes
 global-exclude *.py[co]

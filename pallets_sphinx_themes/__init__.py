@@ -7,7 +7,14 @@ def setup(app):
     base = os.path.dirname(__file__)
 
     for name in (
-        'pocoo', 'flask', 'jinja', 'werkzeug', 'click'
+        'pocoo',
+        'flask',
+        'jinja',
+        'werkzeug',
+        'click',
+        'babel',
+        'platter',
+        'flask-sqlalchemy',
     ):
         app.add_html_theme(name, os.path.join(base, name))
 
