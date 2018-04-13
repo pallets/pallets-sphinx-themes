@@ -2,8 +2,11 @@ import inspect
 import os
 import sys
 import textwrap
+from collections import namedtuple
 
 import pkg_resources
+
+from pallets_sphinx_themes.versions import DocVersion, VersionManager
 
 __version__ = '1.0.0'
 
@@ -24,6 +27,7 @@ def setup(app):
         app.add_html_theme(name, os.path.join(base, name))
 
     app.connect('html-page-context', canonical_url)
+    VersionManager(app)
 
     return {
         'version': __version__,
@@ -56,3 +60,6 @@ def get_version(name):
 
     version = '.'.join(release.split('.', 2)[:2])
     return release, version
+
+
+ProjectLink = namedtuple('ProjectLink', ('title', 'url'))
