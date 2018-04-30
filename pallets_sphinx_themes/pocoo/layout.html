@@ -9,6 +9,8 @@
   {%- if canonical_url %}
     <link rel="canonical" href="{{ canonical_url }}">
   {%- endif %}
+  <script>DOCUMENTATION_OPTIONS.URL_ROOT = '{{ url_root }}';</script>
+  {{ super() }}
 {%- endblock %}
 
 {% set version_warning = versions.banner() %}
