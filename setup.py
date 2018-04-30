@@ -20,7 +20,7 @@ setup(
     url='https://github.com/pallets/pallets-sphinx-themes/',
     license='BSD',
     author='The Pallets Team',
-    author_email='',
+    author_email='contact@palletsprojects.com',
     description='Sphinx themes for Pallets and related projects.',
     long_description=readme,
     packages=find_packages(),
