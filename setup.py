@@ -1,22 +1,12 @@
 import io
-import re
-
-import os
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
 
 with io.open('README.rst', 'rt', encoding='utf8') as f:
     readme = f.read()
 
-with io.open(
-    os.path.join('pallets_sphinx_themes', '__init__.py'), 'rt', encoding='utf8'
-) as f:
-    version = re.search(
-        r'^__version__ = \'(.+)\'', f.read(), re.M
-    ).group(1)
-
 setup(
     name='Pallets-Sphinx-Themes',
-    version=version,
+    version="1.1.0.dev",
     url='https://github.com/pallets/pallets-sphinx-themes/',
     license='BSD',
     author='The Pallets Team',
