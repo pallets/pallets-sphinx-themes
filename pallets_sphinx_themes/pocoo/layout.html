@@ -13,11 +13,11 @@
   {{ super() }}
 {%- endblock %}
 
-{% set version_warning = versions.banner() %}
+{% set version_warning = current_version.banner() %}
 
 {% block document %}
   {%- if version_warning %}
-    <p class="version-warning"><strong>Warning: </strong> {{ version_warning }}</p>
+    <p class="version-warning"><strong>Warning:</strong> {{ version_warning }}</p>
   {%- endif %}
   {{- super() }}
 {%- endblock %}
