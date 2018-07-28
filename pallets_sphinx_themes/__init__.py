@@ -28,7 +28,8 @@ def setup(app):
     app.connect("html-page-context", canonical_url)
     load_versions(app)
 
-    return {"version": __version__, "parallel_read_safe": True}
+    own_release, _ = get_version(__name__)
+    return {"version": own_release, "parallel_read_safe": True}
 
 
 def canonical_url(app, pagename, templatename, context, doctree):
