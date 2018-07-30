@@ -13,7 +13,7 @@
   {{ super() }}
 {%- endblock %}
 
-{% set version_warning = current_version.banner() %}
+{% set version_warning = current_version.banner() if current_version %}
 
 {% block document %}
   {%- if version_warning %}

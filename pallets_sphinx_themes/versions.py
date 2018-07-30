@@ -6,7 +6,10 @@ import os
 from jinja2 import contextfunction
 from packaging import version as pv
 
+from .theme_check import only_pallets_theme
 
+
+@only_pallets_theme()
 def load_versions(app):
     if os.environ.get("READTHEDOCS"):
         versions = readthedocs_versions(app)
@@ -41,11 +44,11 @@ def local_versions(app):
         versions.append(version)
 
     slug = app.config.version
-    dev = 'dev' in app.config.release
+    dev = "dev" in app.config.release
     seen_latest = False
 
     for i, version in enumerate(versions):
-        if version.slug == 'dev':
+        if version.slug == "dev":
             versions[i] = version._replace(dev=True, current=dev)
 
         if version.slug == slug:
@@ -63,20 +66,28 @@ def readthedocs_versions(app):
     current_slug = app.config.html_context["current_version"]
     latest_slug = None
 
-    for slug, _ in config_versions:
-        if _is_version(slug):
-            latest_slug = slug
-            break
+    versions = []
 
-    return [
-        DocVersion(
-            name=slug,
-            slug=slug,
-            latest=slug == latest_slug,
-            dev=slug in {"master", "default", "latest"},
-            current=slug == current_slug,
-        ) for slug, _ in config_versions
-    ]
+    for slug, _ in config_versions:
+        dev = slug in {"master", "default", "latest"}
+        is_version = _is_version(slug)
+        latest = False
+
+        if latest_slug is None and is_version:
+            latest_slug = slug
+            latest = True
+
+        versions.append(
+            DocVersion(
+                name="Development" if dev else slug,
+                slug=slug,
+                latest=latest,
+                dev=dev,
+                current=slug == current_slug,
+            )
+        )
+
+    return versions
 
 
 def _is_version(value):
@@ -87,18 +98,21 @@ def _is_version(value):
         return False
 
 
-class DocVersion(namedtuple("DocVersion", ("name", "slug", "latest", "dev", "current"))):
+class DocVersion(
+    namedtuple("DocVersion", ("name", "slug", "latest", "dev", "current"))
+):
     __slots__ = ()
 
     def __new__(cls, name, slug=None, latest=False, dev=False, current=False):
         slug = slug or name
+
+        if _is_version(name):
+            name = "Version " + name
+
         return super(DocVersion, cls).__new__(cls, name, slug, latest, dev, current)
 
     @contextfunction
     def href(self, context):
-        if self.current:
-            return "."
-
         pathto = context["pathto"]
         master_doc = context["master_doc"]
         pagename = context["pagename"]
