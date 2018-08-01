@@ -5,7 +5,7 @@ def set_is_pallets_theme(app):
     if app.config.is_pallets_theme is not None:
         return
 
-    theme = app.builder.theme
+    theme = getattr(app.builder, "theme", None)
 
     while theme is not None:
         if theme.name == "pocoo":

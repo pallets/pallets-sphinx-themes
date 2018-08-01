@@ -5,6 +5,7 @@ import os
 import pkg_resources
 import textwrap
 from sphinx.builders._epub_base import EpubBuilder
+from sphinx.builders.html import SingleFileHTMLBuilder
 
 from .theme_check import only_pallets_theme, set_is_pallets_theme
 from .versions import load_versions
@@ -26,9 +27,11 @@ def setup(app):
         app.add_html_theme(name, os.path.join(base, name))
 
     app.add_config_value("is_pallets_theme", None, "html")
+    app.add_config_value("singlehtml_sidebars", None, "html")
 
     app.connect("builder-inited", set_is_pallets_theme)
     app.connect("builder-inited", load_versions)
+    app.connect("builder-inited", singlehtml_sidebars)
     app.connect("html-collect-pages", html_collect_pages)
     app.connect("html-page-context", canonical_url)
 
@@ -54,6 +57,15 @@ def canonical_url(app, pagename, templatename, context, doctree):
 
     target = app.builder.get_target_uri(pagename)
     context["canonical_url"] = base + target
+
+
+@only_pallets_theme()
+def singlehtml_sidebars(app):
+    if (
+        app.config.singlehtml_sidebars is not None
+        and isinstance(app.builder, SingleFileHTMLBuilder)
+    ):
+        app.config.html_sidebars["index"] = app.config.singlehtml_sidebars
 
 
 def get_version(name):
