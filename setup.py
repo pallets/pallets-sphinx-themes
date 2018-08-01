@@ -30,8 +30,8 @@ setup(
             'flask-sqlalchemy = pallets_sphinx_themes',
         ],
         'pygments.styles': [
-            'pocoo = pallets_sphinx_themes.pocoo:PocooStyle',
-            'jinja = pallets_sphinx_themes.jinja:JinjaStyle',
+            'pocoo = pallets_sphinx_themes.themes.pocoo:PocooStyle',
+            'jinja = pallets_sphinx_themes.themes.jinja:JinjaStyle',
         ],
     },
     classifiers=[

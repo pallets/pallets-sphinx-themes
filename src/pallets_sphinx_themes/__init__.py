@@ -12,19 +12,13 @@ from .versions import load_versions
 
 
 def setup(app):
-    base = os.path.dirname(__file__)
+    base = os.path.join(os.path.dirname(__file__), "themes")
 
-    for name in (
-        "pocoo",
-        "flask",
-        "jinja",
-        "werkzeug",
-        "click",
-        "babel",
-        "platter",
-        "flask-sqlalchemy",
-    ):
-        app.add_html_theme(name, os.path.join(base, name))
+    for name in os.listdir(base):
+        path = os.path.join(base, name)
+
+        if os.path.isdir(path):
+            app.add_html_theme(name, path)
 
     app.add_config_value("is_pallets_theme", None, "html")
     app.add_config_value("singlehtml_sidebars", None, "html")
