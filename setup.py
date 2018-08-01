@@ -19,16 +19,6 @@ setup(
     zip_safe=False,
     install_requires=['sphinx'],
     entry_points={
-        'sphinx.html_themes': [
-            'pocoo = pallets_sphinx_themes',
-            'flask = pallets_sphinx_themes',
-            'jinja = pallets_sphinx_themes',
-            'werkzeug = pallets_sphinx_themes',
-            'click = pallets_sphinx_themes',
-            'babel = pallets_sphinx_themes',
-            'platter = pallets_sphinx_themes',
-            'flask-sqlalchemy = pallets_sphinx_themes',
-        ],
         'pygments.styles': [
             'pocoo = pallets_sphinx_themes.themes.pocoo:PocooStyle',
             'jinja = pallets_sphinx_themes.themes.jinja:JinjaStyle',
