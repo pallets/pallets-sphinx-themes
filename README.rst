@@ -6,15 +6,24 @@ appropriate theme to make your documentation look consistent.
 
 Available themes:
 
-* flask
-* jinja
-* werkzeug
-* click
+-   flask
+-   jinja
+-   werkzeug
+-   click
 
-Install this package::
+Install this package:
+
+.. code-block:: text
 
     pip install Pallets-Sphinx-Themes
 
-Then choose the theme in ``docs/conf.py``::
+Enable the extension and choose the theme in ``docs/conf.py``:
 
-    html_theme = 'flask'
+.. code-block:: python
+
+    extensions = [
+        "pallets_sphinx_themes",
+        ...
+    ]
+
+    html_theme = "flask"
