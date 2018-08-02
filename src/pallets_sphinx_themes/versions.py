@@ -1,8 +1,8 @@
-from collections import namedtuple
-
 import io
 import json
 import os
+from collections import namedtuple
+
 from jinja2 import contextfunction
 from packaging import version as pv
 

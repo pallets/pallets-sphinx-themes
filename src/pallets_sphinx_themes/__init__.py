@@ -1,13 +1,14 @@
+import os
 import sys
+import textwrap
 from collections import namedtuple
 
-import os
 import pkg_resources
-import textwrap
 from sphinx.builders._epub_base import EpubBuilder
 from sphinx.builders.html import SingleFileHTMLBuilder
 
-from .theme_check import only_pallets_theme, set_is_pallets_theme
+from .theme_check import only_pallets_theme
+from .theme_check import set_is_pallets_theme
 from .versions import load_versions
 
 
@@ -55,9 +56,8 @@ def canonical_url(app, pagename, templatename, context, doctree):
 
 @only_pallets_theme()
 def singlehtml_sidebars(app):
-    if (
-        app.config.singlehtml_sidebars is not None
-        and isinstance(app.builder, SingleFileHTMLBuilder)
+    if app.config.singlehtml_sidebars is not None and isinstance(
+        app.builder, SingleFileHTMLBuilder
     ):
         app.config.html_sidebars["index"] = app.config.singlehtml_sidebars
 
