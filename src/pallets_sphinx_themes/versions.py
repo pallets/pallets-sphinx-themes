@@ -73,19 +73,32 @@ def readthedocs_versions(app):
         is_version = _is_version(slug)
         latest = False
 
+        if dev:
+            name = "Development"
+        elif slug in {"stable", "latest"}:
+            name = slug.title()
+        else:
+            name = slug
+
         if latest_slug is None and is_version:
             latest_slug = slug
             latest = True
 
         versions.append(
             DocVersion(
-                name="Development" if dev else slug,
+                name=name,
                 slug=slug,
                 latest=latest,
                 dev=dev,
                 current=slug == current_slug,
             )
         )
+
+    if latest_slug is None:
+        for i, version in enumerate(versions):
+            if version.slug == "stable":
+                versions[i] = version._replace(latest=True)
+                break
 
     return versions
 
@@ -128,6 +141,9 @@ class DocVersion(
             return
 
         latest = context["latest_version"]
+
+        if latest is None:
+            return
 
         if self.dev:
             return (
