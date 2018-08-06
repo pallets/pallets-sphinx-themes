@@ -100,6 +100,7 @@ def readthedocs_versions(app):
                 versions[i] = version._replace(latest=True)
                 break
 
+    versions.sort(key=lambda x: not x.dev)
     return versions
 
 
