@@ -1,26 +1,20 @@
-@import url(pocoo.css);
-@import url(http://fonts.googleapis.com/css?family=Crimson+Text);
+@import url("pocoo.css");
+@import url("https://fonts.googleapis.com/css?family=Crimson+Text");
 
-/* fonts */
-body                        { font-family: 'Georgia', serif; }
-div.admonition p.admonition-title, div.sphinxsidebar h3, div.sphinxsidebar h4,
-  div.sphinxsidebar input, div.body h1, div.body h2, div.body h3, div.body h4,
-  div.body h5, div.body h6  { font-family: 'Crimson Text', 'Georgia', serif; }
-div.body h1, div.body h2, div.body h3, div.body h4,
-  div.body h5, div.body h6  { color: black; }
-pre, code                   { font-family: 'Consolas', 'Menlo', 'Deja Vu Sans Mono',
-                              'Bitstream Vera Sans Mono', monospace;
-                              font-size: 0.9em; }
- 
-/* colors */
-div.body                    { color: #3E4349; }
-a                           { color: #aa0000; }
-a:hover                     { color: #dd0000; }
-p.version-warning           { background-color: #d40; }
-a.reference                 { border-bottom: 1px dotted #bb0000; }
-a.reference:hover           { border-bottom: 1px solid #dd0000; }
-a.footnote-reference        { border-bottom: 1px dotted #bb0000; }
-a.footnote-reference:hover  { border-bottom: 1px solid #dd0000; }
-a:hover code                { background-color: #eeeeee; }
-code.xref, a code           { background-color: #E8EFF0;
-                              border-bottom: 1px solid white; }
+h1, h2, h3, h4, h5, h6, p.admonition-title, div.sphinxsidebar input {
+  font-family: "Crimson Text", "Garamond", "Georgia", serif;
+}
+
+a, a.reference, a.footnote-reference {
+  color: #a00;
+  border-color: #a00;
+}
+
+a:hover {
+  color: #d00;
+  border-color: #d00;
+}
+
+p.version-warning {
+  background-color: #d40;
+}

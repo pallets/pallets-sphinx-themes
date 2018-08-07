@@ -1,4 +1,4 @@
-@import url(pocoo.css);
+@import url("pocoo.css");
 
 a, a.reference, a.footnote-reference {
   color: #185f6d;
@@ -11,5 +11,5 @@ a:hover {
 }
 
 p.version-warning {
-  background-color: #185f6d;
+  background-color: #ff8c08;
 }

@@ -16,7 +16,6 @@ from pygments.token import Whitespace
 class PocooStyle(Style):
     background_color = "#f8f8f8"
     default_style = ""
-
     styles = {
         # No corresponding class for the following:
         # Text: "",  # class:  ''
