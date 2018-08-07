@@ -1,4 +1,6 @@
+import inspect
 import os
+import re
 import sys
 import textwrap
 from collections import namedtuple
@@ -29,6 +31,8 @@ def setup(app):
     app.connect("builder-inited", singlehtml_sidebars)
     app.connect("html-collect-pages", html_collect_pages)
     app.connect("html-page-context", canonical_url)
+    app.connect("autodoc-skip-member", skip_internal)
+    app.connect("autodoc-process-docstring", cut_module_meta)
 
     own_release, _ = get_version(__name__)
     return {"version": own_release, "parallel_read_safe": True}
@@ -59,7 +63,25 @@ def singlehtml_sidebars(app):
     if app.config.singlehtml_sidebars is not None and isinstance(
         app.builder, SingleFileHTMLBuilder
     ):
-        app.config.html_sidebars["index"] = app.config.singlehtml_sidebars
+        app.config.html_sidebars = app.config.singlehtml_sidebars
+
+
+@only_pallets_theme()
+def skip_internal(app, what, name, obj, skip, options):
+    docstring = inspect.getdoc(obj) or ""
+
+    if skip or re.search(r"^\s*:internal:\s*$", docstring, re.M) is not None:
+        return True
+
+
+@only_pallets_theme()
+def cut_module_meta(app, what, name, obj, options, lines):
+    if what != "module":
+        return
+
+    lines[:] = [
+        line for line in lines if not line.startswith((":copyright:", ":license:"))
+    ]
 
 
 def get_version(name):
