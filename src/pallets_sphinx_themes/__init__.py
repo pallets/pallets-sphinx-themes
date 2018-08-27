@@ -8,6 +8,7 @@ from collections import namedtuple
 import pkg_resources
 from sphinx.builders._epub_base import EpubBuilder
 from sphinx.builders.html import SingleFileHTMLBuilder
+from sphinx.errors import ExtensionError
 
 from .theme_check import only_pallets_theme
 from .theme_check import set_is_pallets_theme
@@ -24,15 +25,20 @@ def setup(app):
             app.add_html_theme(name, path)
 
     app.add_config_value("is_pallets_theme", None, "html")
-    app.add_config_value("singlehtml_sidebars", None, "html")
 
     app.connect("builder-inited", set_is_pallets_theme)
     app.connect("builder-inited", load_versions)
-    app.connect("builder-inited", singlehtml_sidebars)
     app.connect("html-collect-pages", html_collect_pages)
     app.connect("html-page-context", canonical_url)
     app.connect("autodoc-skip-member", skip_internal)
     app.connect("autodoc-process-docstring", cut_module_meta)
+
+    try:
+        app.add_config_value("singlehtml_sidebars", None, "html")
+    except ExtensionError:
+        pass
+    else:
+        app.connect("builder-inited", singlehtml_sidebars)
 
     from .themes import click as click_ext
 
