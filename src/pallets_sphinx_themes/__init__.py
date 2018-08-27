@@ -28,7 +28,7 @@ def setup(app):
 
     app.connect("builder-inited", set_is_pallets_theme)
     app.connect("builder-inited", load_versions)
-    app.connect("html-collect-pages", html_collect_pages)
+    app.connect("html-collect-pages", add_404_page)
     app.connect("html-page-context", canonical_url)
     app.connect("autodoc-skip-member", skip_internal)
     app.connect("autodoc-process-docstring", cut_module_meta)
@@ -49,7 +49,10 @@ def setup(app):
 
 
 @only_pallets_theme(default=())
-def html_collect_pages(app):
+def add_404_page(app):
+    """Build an extra ``404.html`` page if no ``"404"`` key is in the
+    ``html_additional_pages`` config.
+    """
     is_epub = isinstance(app.builder, EpubBuilder)
     config_pages = app.config.html_additional_pages
 
@@ -59,6 +62,10 @@ def html_collect_pages(app):
 
 @only_pallets_theme()
 def canonical_url(app, pagename, templatename, context, doctree):
+    """Build the canonical URL for a page. Appends the path for the
+    page to the base URL specified by the
+    ``html_context["canonical_url"]`` config.
+    """
     base = context.get("canonical_url")
 
     if not base:
@@ -70,6 +77,11 @@ def canonical_url(app, pagename, templatename, context, doctree):
 
 @only_pallets_theme()
 def singlehtml_sidebars(app):
+    """When using a ``singlehtml`` builder, replace the
+    ``html_sidebars`` config with ``singlehtml_sidebars``. This can be
+    used to change what sidebars are rendered for the single page called
+    ``"index"`` by the builder.
+    """
     if app.config.singlehtml_sidebars is not None and isinstance(
         app.builder, SingleFileHTMLBuilder
     ):
@@ -78,6 +90,9 @@ def singlehtml_sidebars(app):
 
 @only_pallets_theme()
 def skip_internal(app, what, name, obj, skip, options):
+    """Skip rendering autodoc when the docstring contains a line with
+    only the string `:internal:`.
+    """
     docstring = inspect.getdoc(obj) or ""
 
     if skip or re.search(r"^\s*:internal:\s*$", docstring, re.M) is not None:
@@ -86,6 +101,10 @@ def skip_internal(app, what, name, obj, skip, options):
 
 @only_pallets_theme()
 def cut_module_meta(app, what, name, obj, options, lines):
+    """Don't render lines that start with ``:copyright:`` or
+    ``:license:`` when rendering module autodoc. These lines are useful
+    meta information in the source code, but are noisy in the docs.
+    """
     if what != "module":
         return
 
@@ -94,7 +113,20 @@ def cut_module_meta(app, what, name, obj, options, lines):
     ]
 
 
-def get_version(name):
+def get_version(name, version_length=2):
+    """Ensures that the named package is installed and returns version
+    strings to be used by Sphinx.
+
+    Sphinx uses ``version`` to mean the first two values from the full
+    version string, which is called ``release``. In ``conf.py``::
+
+        release, version = get_version("Flask")
+
+    :param name: Name of package to get.
+    :param version_length: How many values from ``release`` to use for
+        ``version``.
+    :return: ``(release, version)`` tuple.
+    """
     try:
         release = pkg_resources.get_distribution(name).version
     except ImportError:
@@ -107,8 +139,9 @@ def get_version(name):
         )
         sys.exit(1)
 
-    version = ".".join(release.split(".", 2)[:2])
+    version = ".".join(release.split(".", version_length)[:version_length])
     return release, version
 
 
+#: ``(title, url)`` named tuple that will be rendered with
 ProjectLink = namedtuple("ProjectLink", ("title", "url"))

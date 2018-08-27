@@ -18,7 +18,12 @@ from sphinx.domains import Domain
 
 
 class EofEchoingStdin(EchoingStdin):
-    """Like """
+    """Like :class:`click.testing.EchoingStdin` but adds a visible
+    ``^D`` in place of the EOT character (``\x04``).
+
+    :meth:`ExampleRunner.invoke` adds ``\x04`` when
+    ``terminate_input=True``.
+    """
 
     def _echo(self, rv):
         eof = False
@@ -37,6 +42,11 @@ class EofEchoingStdin(EchoingStdin):
 
 @contextlib.contextmanager
 def patch_modules():
+    """Patch modules to work better with :meth:`ExampleRunner.invoke`.
+
+    ``subprocess.call` output is redirected to ``click.echo`` so it
+    shows up in the example output.
+    """
     old_call = subprocess.call
 
     def dummy_call(*args, **kwargs):
