@@ -488,3 +488,17 @@ table.footnote td {
     color: #ccc;
   }
 }
+
+/* https://github.com/twbs/bootstrap/blob
+   /0e8831505ac845f3102fa2c5996a7141c9ab01ee
+   /scss/mixins/_screen-reader.scss */
+.hide-header > h1:first-child {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
