@@ -34,6 +34,10 @@ def setup(app):
     app.connect("autodoc-skip-member", skip_internal)
     app.connect("autodoc-process-docstring", cut_module_meta)
 
+    from .themes import click as click_ext
+
+    click_ext.setup(app)
+
     own_release, _ = get_version(__name__)
     return {"version": own_release, "parallel_read_safe": True}
 
