@@ -1,7 +1,7 @@
 Version 1.1.0
 =============
 
-Unreleased
+Released 2018-08-28
 
 -   Modernize ``click`` theme. The ``.. click:example::`` and
     ``.. click:run::`` directives used by Click are available and ported
