@@ -36,6 +36,7 @@ def only_pallets_theme(default=None):
     :param default: Value to return if a Pallets theme is not in use.
     :return: A decorator.
     """
+
     def decorator(f):
         @wraps(f)
         def wrapped(app, *args, **kwargs):
