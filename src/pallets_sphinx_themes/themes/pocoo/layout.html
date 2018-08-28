@@ -23,6 +23,12 @@
   {{ super() }}
 {%- endblock %}
 
+{% block sidebarlogo %}
+  {% if pagename != "index" or theme_index_sidebar_logo %}
+    {{ super() }}
+  {% endif %}
+{% endblock %}
+
 {% set version_warning = current_version.banner() if current_version %}
 
 {% block document %}
