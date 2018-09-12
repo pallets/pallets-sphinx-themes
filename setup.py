@@ -19,7 +19,7 @@ setup(
     package_dir={"": "src"},
     include_package_data=True,
     zip_safe=False,
-    install_requires=["sphinx"],
+    install_requires=["sphinx>=1.7.0"],
     entry_points={
         "pygments.styles": [
             "pocoo = pallets_sphinx_themes.themes.pocoo:PocooStyle",
