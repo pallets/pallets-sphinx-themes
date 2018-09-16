@@ -113,18 +113,21 @@ def cut_module_meta(app, what, name, obj, options, lines):
     ]
 
 
-def get_version(name, version_length=2):
+def get_version(name, version_length=2, placeholder="x"):
     """Ensures that the named package is installed and returns version
     strings to be used by Sphinx.
 
-    Sphinx uses ``version`` to mean the first two values from the full
+    Sphinx uses ``version`` to mean an abbreviated form of the full
     version string, which is called ``release``. In ``conf.py``::
 
         release, version = get_version("Flask")
+        # release = 1.0.x, version = 1.0.3.dev0
 
     :param name: Name of package to get.
     :param version_length: How many values from ``release`` to use for
         ``version``.
+    :param placeholder: Extra suffix to add to the version. The default
+        produces versions like ``1.2.x``.
     :return: ``(release, version)`` tuple.
     """
     try:
@@ -140,6 +143,10 @@ def get_version(name, version_length=2):
         sys.exit(1)
 
     version = ".".join(release.split(".", version_length)[:version_length])
+
+    if placeholder:
+        version = "{}.{}".format(version, placeholder)
+
     return release, version
 
 
