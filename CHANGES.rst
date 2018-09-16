@@ -1,3 +1,20 @@
+Version 1.1.1
+=============
+
+Released 2018-09-16
+
+-   Add configurable ".x" placholder to versions, producing strings like "1.2.x". (`#6`_, `#12`_)
+-   Add dependency on "packaging" to support older Sphinx versions. (`#9`_, `#11`_)
+-   Backport ``shlex.quote`` for Python 2. (`#13`_, `#14`_)
+
+.. _#6: https://github.com/pallets/pallets-sphinx-themes/issues/6
+.. _#9: https://github.com/pallets/pallets-sphinx-themes/issues/9
+.. _#11: https://github.com/pallets/pallets-sphinx-themes/pull/11
+.. _#12: https://github.com/pallets/pallets-sphinx-themes/pull/12
+.. _#13: https://github.com/pallets/pallets-sphinx-themes/issues/13
+.. _#14: https://github.com/pallets/pallets-sphinx-themes/pull/14
+
+
 Version 1.1.0
 =============
 
