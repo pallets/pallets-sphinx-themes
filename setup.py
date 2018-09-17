@@ -1,10 +1,26 @@
 import io
+import os
 
 from setuptools import find_packages
 from setuptools import setup
 
 with io.open("README.rst", "rt", encoding="utf8") as f:
     readme = f.read()
+
+
+def get_sphinx_html_themes():
+    """Get sphinx.html_themes entry_points without importing package."""
+    themes = []
+    package = "pallets_sphinx_themes"
+    base = os.path.join(os.path.dirname(__file__), "src", package, "themes")
+
+    for name in os.listdir(base):
+        path = os.path.join(base, name)
+        if os.path.isdir(path):
+            themes.append("%s = %s" % (name, package))
+
+    return themes
+
 
 setup(
     name="Pallets-Sphinx-Themes",
@@ -21,6 +37,7 @@ setup(
     zip_safe=False,
     install_requires=["sphinx", "packaging"],
     entry_points={
+        "sphinx.html_themes": get_sphinx_html_themes(),
         "pygments.styles": [
             "pocoo = pallets_sphinx_themes.themes.pocoo:PocooStyle",
             "jinja = pallets_sphinx_themes.themes.jinja:JinjaStyle",
