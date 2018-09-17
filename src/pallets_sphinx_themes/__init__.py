@@ -12,7 +12,7 @@ from sphinx.errors import ExtensionError
 
 from .theme_check import only_pallets_theme
 from .theme_check import set_is_pallets_theme
-from .versions import load_versions
+from .versions import load_versions, DocVersion
 
 
 def setup(app):
