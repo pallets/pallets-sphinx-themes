@@ -1,10 +1,24 @@
+Version 1.1.2
+=============
+
+Unreleased
+
+-   Strip ".x" placeholder when parsing versions for sidebar.
+    (`#7`_, `#17`_)
+
+.. _#7: https://github.com/pallets/pallets-sphinx-themes/issues/7
+.. _#17: https://github.com/pallets/pallets-sphinx-themes/pull/17
+
+
 Version 1.1.1
 =============
 
 Released 2018-09-16
 
--   Add configurable ".x" placholder to versions, producing strings like "1.2.x". (`#6`_, `#12`_)
--   Add dependency on "packaging" to support older Sphinx versions. (`#9`_, `#11`_)
+-   Add configurable ".x" placholder to versions, producing strings like
+    "1.2.x". (`#6`_, `#12`_)
+-   Add dependency on "packaging" to support older Sphinx versions.
+    (`#9`_, `#11`_)
 -   Backport ``shlex.quote`` for Python 2. (`#13`_, `#14`_)
 
 .. _#6: https://github.com/pallets/pallets-sphinx-themes/issues/6
