@@ -104,7 +104,10 @@ def readthedocs_versions(app):
     return versions
 
 
-def _is_version(value):
+def _is_version(value, placeholder="x"):
+    if value.endswith(".{}".format(placeholder)):
+        value = value[: -(len(placeholder) + 1)]
+
     try:
         pv.Version(value)
         return True
