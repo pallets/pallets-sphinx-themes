@@ -8,7 +8,7 @@ with io.open("README.rst", "rt", encoding="utf8") as f:
 
 setup(
     name="Pallets-Sphinx-Themes",
-    version="1.1.1",
+    version="1.1.2",
     url="https://github.com/pallets/pallets-sphinx-themes/",
     license="BSD",
     author="The Pallets Team",

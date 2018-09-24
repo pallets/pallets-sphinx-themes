@@ -1,7 +1,7 @@
 Version 1.1.2
 =============
 
-Unreleased
+Released 2018-09-24
 
 -   Strip ".x" placeholder when parsing versions for sidebar.
     (`#7`_, `#17`_)
