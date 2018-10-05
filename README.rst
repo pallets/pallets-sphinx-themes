@@ -35,7 +35,7 @@ These themes require the *autodoc* extension.
 
 If you didn't setup *Sphinx* with *autodoc*, you need to activate it in ``conf.py``. Ensure that ``"sphinx.ext.autodoc"`` is loaded **before** ``"pallets_sphinx_themes"`` in the list assigned to the extensions config value. 
 
-To make sure that ``sphinx-build`` properly loads ``autodoc``, uncomment the lines near the top of ``conf.py``:
+To make sure that ``sphinx-build`` properly loads *autodoc*, uncomment the lines near the top of ``docs/conf.py``:
 
 .. code-block:: python
 
