@@ -64,7 +64,8 @@ def add_404_page(app):
 def canonical_url(app, pagename, templatename, context, doctree):
     """Build the canonical URL for a page. Appends the path for the
     page to the base URL specified by the
-    ``html_context["canonical_url"]`` config.
+    ``html_context["canonical_url"]`` config and stores it in
+    ``html_context["page_canonical_url"]``.
     """
     base = context.get("canonical_url")
 
@@ -72,7 +73,7 @@ def canonical_url(app, pagename, templatename, context, doctree):
         return
 
     target = app.builder.get_target_uri(pagename)
-    context["canonical_url"] = base + target
+    context["page_canonical_url"] = base + target
 
 
 @only_pallets_theme()
