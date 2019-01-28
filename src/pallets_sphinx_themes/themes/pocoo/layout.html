@@ -10,16 +10,6 @@
     <link rel="canonical" href="{{ canonical_url }}">
   {%- endif %}
   <script>DOCUMENTATION_OPTIONS.URL_ROOT = '{{ url_root }}';</script>
-  {%- if READTHEDOCS and not readthedocs_docsearch %}
-    <script>
-      if (typeof READTHEDOCS_DATA !== 'undefined') {
-        if (!READTHEDOCS_DATA.features) {
-          READTHEDOCS_DATA.features = {};
-        }
-        READTHEDOCS_DATA.features.docsearch_disabled = true;
-      }
-    </script>
-  {%- endif %}
   {{ super() }}
 {%- endblock %}
 
@@ -44,3 +34,17 @@
   <span id="sidebar-top"></span>
   {{- super() }}
 {%- endblock %}
+
+{% block footer %}
+  {{ super() }}
+  {%- if READTHEDOCS and not readthedocs_docsearch %}
+    <script>
+      if (typeof READTHEDOCS_DATA !== 'undefined') {
+        if (!READTHEDOCS_DATA.features) {
+          READTHEDOCS_DATA.features = {};
+        }
+        READTHEDOCS_DATA.features.docsearch_disabled = true;
+      }
+    </script>
+  {%- endif %}
+{% endblock %}
