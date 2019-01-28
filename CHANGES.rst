@@ -1,3 +1,14 @@
+Version 1.1.3
+=============
+
+Unreleased
+
+-   Move the Read the Docs search flag to the ``footer`` block to ensure
+    it executes after Read the Docs injects its data. (`#20`_)
+
+.. _#20: https://github.com/pallets/pallets-sphinx-themes/pull/20
+
+
 Version 1.1.2
 =============
 
