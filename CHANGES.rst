@@ -1,7 +1,7 @@
 Version 1.1.4
 =============
 
-Unreleased
+Released 2019-01-28
 
 -   Store a page's canonical URL in
     ``html_context["page_canonical_url"]`` rather than overwriting
