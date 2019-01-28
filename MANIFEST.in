@@ -1,3 +1,4 @@
-include CHANGES.rst LICENSE.rst
+include CHANGES.rst
+include LICENSE.rst
 graft src/pallets_sphinx_themes
 global-exclude *.py[co]

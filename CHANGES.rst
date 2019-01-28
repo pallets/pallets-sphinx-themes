@@ -1,7 +1,7 @@
 Version 1.1.3
 =============
 
-Unreleased
+Released 2019-01-28
 
 -   Move the Read the Docs search flag to the ``footer`` block to ensure
     it executes after Read the Docs injects its data. (`#20`_)

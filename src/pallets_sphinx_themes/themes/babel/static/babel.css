@@ -18,7 +18,7 @@ pre, code                   { font-family: 'Ubuntu Mono', 'Consolas', 'Menlo',
 pre, * pre                  { padding: 7px 0 7px 30px!important;
                               margin: 15px 0!important;
                               line-height: 1.3; }
- 
+
 /* colors */
 div.body                    { color: #3E4349; }
 a                           { color: #5D2CD1; }

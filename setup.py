@@ -8,10 +8,10 @@ with io.open("README.rst", "rt", encoding="utf8") as f:
 
 setup(
     name="Pallets-Sphinx-Themes",
-    version="1.1.2",
+    version="1.1.3",
     url="https://github.com/pallets/pallets-sphinx-themes/",
-    license="BSD",
-    author="The Pallets Team",
+    license="BSD-3-Clause",
+    author="Pallets",
     author_email="contact@palletsprojects.com",
     description="Sphinx themes for Pallets and related projects.",
     long_description=readme,
@@ -19,7 +19,7 @@ setup(
     package_dir={"": "src"},
     include_package_data=True,
     zip_safe=False,
-    install_requires=["sphinx", "packaging"],
+    install_requires=["Sphinx", "packaging"],
     entry_points={
         "pygments.styles": [
             "pocoo = pallets_sphinx_themes.themes.pocoo:PocooStyle",
