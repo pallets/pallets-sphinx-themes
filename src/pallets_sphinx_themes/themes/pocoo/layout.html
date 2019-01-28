@@ -6,8 +6,8 @@
 {%- endset %}
 
 {% block extrahead %}
-  {%- if canonical_url %}
-    <link rel="canonical" href="{{ canonical_url }}">
+  {%- if page_canonical_url %}
+    <link rel="canonical" href="{{ page_canonical_url }}">
   {%- endif %}
   <script>DOCUMENTATION_OPTIONS.URL_ROOT = '{{ url_root }}';</script>
   {{ super() }}

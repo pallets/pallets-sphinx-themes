@@ -1,3 +1,15 @@
+Version 1.1.4
+=============
+
+Unreleased
+
+-   Store a page's canonical URL in
+    ``html_context["page_canonical_url"]`` rather than overwriting
+    ``canonical_url``, for compatibility with Read the Docs. (`#21`_)
+
+.. _#21: https://github.com/pallets/pallets-sphinx-themes/pull/21
+
+
 Version 1.1.3
 =============
 
