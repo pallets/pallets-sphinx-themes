@@ -1,6 +1,6 @@
 @import url("pocoo.css");
-@import url("http://fonts.googleapis.com/css?family=Ubuntu+Mono");
-@import url("http://fonts.googleapis.com/css?family=Open+Sans");
+@import url("https://fonts.googleapis.com/css?family=Ubuntu+Mono");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
 
 body, pre, code {
   font-family: "Ubuntu Mono", "Consolas", "Menlo", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", monospace;
