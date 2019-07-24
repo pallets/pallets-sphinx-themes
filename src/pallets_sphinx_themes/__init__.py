@@ -41,8 +41,10 @@ def setup(app):
         app.connect("builder-inited", singlehtml_sidebars)
 
     from .themes import click as click_ext
+    from .themes import jinja as jinja_ext
 
     click_ext.setup(app)
+    jinja_ext.setup(app)
 
     own_release, _ = get_version(__name__)
     return {"version": own_release, "parallel_read_safe": True}
