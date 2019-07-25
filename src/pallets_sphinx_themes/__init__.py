@@ -5,14 +5,19 @@ import sys
 import textwrap
 from collections import namedtuple
 
-import pkg_resources
+import importlib_metadata
 from sphinx.builders._epub_base import EpubBuilder
-from sphinx.builders.html import SingleFileHTMLBuilder
 from sphinx.errors import ExtensionError
 
 from .theme_check import only_pallets_theme
 from .theme_check import set_is_pallets_theme
 from .versions import load_versions
+
+try:
+    from sphinx.builders.singlehtml import SingleFileHTMLBuilder
+except ImportError:
+    # Sphinx 1 compatibility
+    from sphinx.builders.html import SingleFileHTMLBuilder
 
 
 def setup(app):
@@ -134,7 +139,7 @@ def get_version(name, version_length=2, placeholder="x"):
     :return: ``(release, version)`` tuple.
     """
     try:
-        release = pkg_resources.get_distribution(name).version
+        release = importlib_metadata.version(name)
     except ImportError:
         print(
             textwrap.fill(
