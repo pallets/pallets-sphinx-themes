@@ -41,3 +41,13 @@ class JinjaStyle(Style):
         Generic.Traceback: "#aa0000",
         Error: "#f00 bg:#faa",
     }
+
+
+def setup(app):
+    """Load the Jinja extension if Jinja is installed."""
+    try:
+        from . import domain
+    except ImportError:
+        return
+
+    domain.setup(app)
