@@ -35,8 +35,12 @@ def setup(app):
     app.connect("builder-inited", load_versions)
     app.connect("html-collect-pages", add_404_page)
     app.connect("html-page-context", canonical_url)
-    app.connect("autodoc-skip-member", skip_internal)
-    app.connect("autodoc-process-docstring", cut_module_meta)
+
+    try:
+        app.connect("autodoc-skip-member", skip_internal)
+        app.connect("autodoc-process-docstring", cut_module_meta)
+    except ExtensionError:
+        pass
 
     try:
         app.add_config_value("singlehtml_sidebars", None, "html")
