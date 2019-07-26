@@ -1,66 +1,65 @@
+Version 1.2.0
+-------------
+
+Released 2019-07-26
+
+-   Use HTTPS for font URLs in CSS. :pr:`22`
+-   Don't require ``sphinx.ext.autodoc`` to be enabled.
+-   Implement the Jinja directives ``jinja:filters::``,
+    ``jinja:tests::``, and ``jinja:nodes::``.
+-   Generate a table of contents for Jinja filters and tests.
+-   Update the ``babel`` and ``platter`` themes.
+
+
 Version 1.1.4
-=============
+-------------
 
 Released 2019-01-28
 
 -   Store a page's canonical URL in
     ``html_context["page_canonical_url"]`` rather than overwriting
-    ``canonical_url``, for compatibility with Read the Docs. (`#21`_)
-
-.. _#21: https://github.com/pallets/pallets-sphinx-themes/pull/21
+    ``canonical_url``, for compatibility with Read the Docs. :pr:`21`
 
 
 Version 1.1.3
-=============
+-------------
 
 Released 2019-01-28
 
 -   Move the Read the Docs search flag to the ``footer`` block to ensure
-    it executes after Read the Docs injects its data. (`#20`_)
-
-.. _#20: https://github.com/pallets/pallets-sphinx-themes/pull/20
+    it executes after Read the Docs injects its data. :pr:`20`
 
 
 Version 1.1.2
-=============
+-------------
 
 Released 2018-09-24
 
 -   Strip ".x" placeholder when parsing versions for sidebar.
-    (`#7`_, `#17`_)
-
-.. _#7: https://github.com/pallets/pallets-sphinx-themes/issues/7
-.. _#17: https://github.com/pallets/pallets-sphinx-themes/pull/17
+    :issue:`7`, :pr:`17`
 
 
 Version 1.1.1
-=============
+-------------
 
 Released 2018-09-16
 
 -   Add configurable ".x" placholder to versions, producing strings like
-    "1.2.x". (`#6`_, `#12`_)
+    "1.2.x". :issue:`6`, :pr:`12`
 -   Add dependency on "packaging" to support older Sphinx versions.
-    (`#9`_, `#11`_)
--   Backport ``shlex.quote`` for Python 2. (`#13`_, `#14`_)
-
-.. _#6: https://github.com/pallets/pallets-sphinx-themes/issues/6
-.. _#9: https://github.com/pallets/pallets-sphinx-themes/issues/9
-.. _#11: https://github.com/pallets/pallets-sphinx-themes/pull/11
-.. _#12: https://github.com/pallets/pallets-sphinx-themes/pull/12
-.. _#13: https://github.com/pallets/pallets-sphinx-themes/issues/13
-.. _#14: https://github.com/pallets/pallets-sphinx-themes/pull/14
+    :issue:`9`, :pr:`11`
+-   Backport ``shlex.quote`` for Python 2. :issue:`13`, :pr:`14`
 
 
 Version 1.1.0
-=============
+-------------
 
 Released 2018-08-28
 
 -   Modernize ``click`` theme. The ``.. click:example::`` and
     ``.. click:run::`` directives used by Click are available and ported
     to Python 3.
--   Modernize ``werkzeug`` theme. (`#4`_)
+-   Modernize ``werkzeug`` theme. :pr:`4`
 -   Modernize ``jinja`` theme. Local extensions used by Jinja are not
     available yet.
 -   Remove theme entry points to make late configuration consistent. The
@@ -85,22 +84,18 @@ Released 2018-08-28
 -   Disable the sidebar logo on the index page with
     ``html_theme_options["index_sidebar_logo"] = False``.
 
-.. _#4: https://github.com/pallets/pallets-sphinx-themes/pull/4
-
 
 Version 1.0.1
-=============
+-------------
 
 Released 2018-04-29
 
 -   Work around an issues with search when using the ``dirhtml``
-    builder. (`#3`_)
-
-.. _#3: https://github.com/pallets/pallets-sphinx-themes/pull/3
+    builder. :pr:`3`
 
 
 Version 1.0.0
-=============
+-------------
 
 Released 2018-04-18
 
