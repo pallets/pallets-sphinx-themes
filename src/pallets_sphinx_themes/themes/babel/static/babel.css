@@ -1,40 +1,24 @@
 @import url(pocoo.css);
-@import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,400italic,700,700italic);
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400);
+@import url(http://fonts.googleapis.com/css?family=Bree+Serif);
 
-/* fonts */
-body                        { font-family: 'Ubuntu Mono', 'Consolas', 'Menlo',
-                              'Deja Vu Sans Mono', 'Bitstream Vera Sans Mono';
-                              font-size: 15px; }
-div.admonition p.admonition-title, div.sphinxsidebar h3, div.sphinxsidebar h4,
-  div.sphinxsidebar input, div.body h1, div.body h2, div.body h3, div.body h4,
-  div.body h5, div.body h6  { font-family: 'Open Sans', 'Helvetica', 'Arial',
-                              sans-serif; font-weight: 400; }
-div.body h1, div.body h2, div.body h3, div.body h4,
-  div.body h5, div.body h6  { color: black; }
-pre, code                   { font-family: 'Ubuntu Mono', 'Consolas', 'Menlo',
-                              'Deja Vu Sans Mono', 'Bitstream Vera Sans Mono';
-                              font-size: 15px; background: transparent; }
-pre, * pre                  { padding: 7px 0 7px 30px!important;
-                              margin: 15px 0!important;
-                              line-height: 1.3; }
+body {
+  font-family: "Verdana", "Garamond", "Georgia", serif;
+}
 
-/* colors */
-div.body                    { color: #3E4349; }
-a                           { color: #5D2CD1; }
-a:hover                     { color: #7546E3; }
-p.version-warning           { background-color: #7546E3; }
-a.reference                 { border-bottom: 1px dotted #5D2CD1; }
-a.reference:hover           { border-bottom: 1px solid #7546E3; }
-a.footnote-reference        { border-bottom: 1px dotted #5D2CD1; }
-a.footnote-reference:hover  { border-bottom: 1px solid #7546E3; }
-a:hover code                { background-color: #eeeeee; }
-code.xref, a code           { background-color: #E8EFF0;
-                              border-bottom: 1px solid white; }
+h1, h2, h3, h4, h5, h6, p.admonition-title, div.sphinxsidebar input {
+  font-family: "Bree Serif", "Garamond", "Georgia", serif;
+}
 
-/* special elements */
-div.indexwrapper h1 {
-    text-indent: -999999px;
-    background: url(babel.png) no-repeat center center;
-    height: 200px;
+a {
+  color: #b00;
+  border-color: #b00;
+}
+
+a:hover {
+  color: #fc5e1e;
+  border-color: #fc5e1e;
+}
+
+p.version-warning {
+  background-color: #d40;
 }
