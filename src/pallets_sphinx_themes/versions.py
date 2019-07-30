@@ -70,37 +70,36 @@ def readthedocs_versions(app):
 
     for slug, _ in config_versions:
         dev = slug in {"master", "default", "latest"}
-        is_version = _is_version(slug)
-        latest = False
 
         if dev:
             name = "Development"
-        elif slug in {"stable", "latest"}:
+        elif not _is_version(slug):
             name = slug.title()
         else:
             name = slug
-
-        if latest_slug is None and is_version:
-            latest_slug = slug
-            latest = True
 
         versions.append(
             DocVersion(
                 name=name,
                 slug=slug,
-                latest=latest,
                 dev=dev,
                 current=slug == current_slug,
             )
         )
 
-    if latest_slug is None:
+    versions.sort(key=lambda x: x.version, reverse=True)
+    versions.sort(key=lambda x: not x.dev)
+
+    for i, version in enumerate(versions):
+        if _is_version(version.slug):
+            versions[i] = version._replace(latest=True)
+            break
+    else:
         for i, version in enumerate(versions):
             if version.slug == "stable":
                 versions[i] = version._replace(latest=True)
                 break
 
-    versions.sort(key=lambda x: not x.dev)
     return versions
 
 
@@ -116,17 +115,20 @@ def _is_version(value, placeholder="x"):
 
 
 class DocVersion(
-    namedtuple("DocVersion", ("name", "slug", "latest", "dev", "current"))
+    namedtuple("DocVersion", ("name", "slug", "version", "latest", "dev", "current"))
 ):
     __slots__ = ()
 
     def __new__(cls, name, slug=None, latest=False, dev=False, current=False):
         slug = slug or name
+        version = pv.parse(slug)
 
-        if _is_version(name):
+        if _is_version(slug):
             name = "Version " + name
 
-        return super(DocVersion, cls).__new__(cls, name, slug, latest, dev, current)
+        return super(DocVersion, cls).__new__(
+            cls, name, slug, version, latest, dev, current
+        )
 
     @contextfunction
     def href(self, context):
