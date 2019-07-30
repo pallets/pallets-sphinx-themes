@@ -1,7 +1,7 @@
 Version 1.2.1
 -------------
 
-Unreleased
+Released 2019-07-29
 
 -   Sort versions taken from Read the Docs so that 2.10.x is considered
     newer than 2.9.x. :issue:`24`
