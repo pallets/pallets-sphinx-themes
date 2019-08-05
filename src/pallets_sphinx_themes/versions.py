@@ -64,8 +64,6 @@ def local_versions(app):
 def readthedocs_versions(app):
     config_versions = app.config.html_context["versions"]
     current_slug = app.config.html_context["current_version"]
-    latest_slug = None
-
     versions = []
 
     for slug, _ in config_versions:
@@ -79,12 +77,7 @@ def readthedocs_versions(app):
             name = slug
 
         versions.append(
-            DocVersion(
-                name=name,
-                slug=slug,
-                dev=dev,
-                current=slug == current_slug,
-            )
+            DocVersion(name=name, slug=slug, dev=dev, current=slug == current_slug)
         )
 
     versions.sort(key=lambda x: x.version, reverse=True)
