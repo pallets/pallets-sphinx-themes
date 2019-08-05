@@ -5,6 +5,7 @@ Unreleased
 
 -   Make the version warning sticky so that it appears when linking to
     the middle of a document. :issue:`5`
+-   Remove CSS for old ads.
 
 
 Version 1.2.1

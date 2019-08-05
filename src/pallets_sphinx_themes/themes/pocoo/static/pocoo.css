@@ -135,30 +135,6 @@ div.sphinxsidebar ul.versions span.note {
   color: #999;
 }
 
-/* -- carbon ads ---------------------------------------------------- */
-
-div.carbon_ads {
-  text-align: center;
-  overflow: hidden;
-  margin: 15px 0;
-  border: 1px solid #ccc;
-  background: #eee;
-  padding: 10px 7px;
-}
-
-div.carbon_ads a.carbon-img {
-  display: block;
-  margin-bottom: 7px;
-  border: none;
-}
-
-div.carbon_ads a.carbon-poweredby {
-  margin-top: 7px;
-  margin-left: 15px;
-  float: right;
-  font-size: 11px;
-}
-
 /* -- version warning ----------------------------------------------- */
 
 p.version-warning {
