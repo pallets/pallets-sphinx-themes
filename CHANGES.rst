@@ -1,7 +1,7 @@
 Version 1.2.2
 -------------
 
-Unreleased
+Released 2019-07-04
 
 -   Make the version warning sticky so that it appears when linking to
     the middle of a document. :issue:`5`
