@@ -1,3 +1,12 @@
+Version 1.2.2
+-------------
+
+Unreleased
+
+-   Make the version warning sticky so that it appears when linking to
+    the middle of a document. :issue:`5`
+
+
 Version 1.2.1
 -------------
 
