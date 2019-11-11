@@ -5,7 +5,6 @@ import sys
 import textwrap
 from collections import namedtuple
 
-import importlib_metadata
 from sphinx.builders._epub_base import EpubBuilder
 from sphinx.errors import ExtensionError
 
@@ -18,6 +17,12 @@ try:
 except ImportError:
     # Sphinx 1 compatibility
     from sphinx.builders.html import SingleFileHTMLBuilder
+
+try:
+    from importlib import metadata as importlib_metadata
+except ImportError:
+    # Python <3.8 compatibility
+    import importlib_metadata
 
 
 def setup(app):
