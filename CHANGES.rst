@@ -1,3 +1,11 @@
+Version 1.2.3
+-------------
+
+Released 2020-01-02
+
+-   Use built-in :mod:`importlib.metadata` on Python 3.8. :pr:`27`
+
+
 Version 1.2.2
 -------------
 
