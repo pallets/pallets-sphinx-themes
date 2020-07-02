@@ -4,6 +4,7 @@ Version 1.2.3
 Released 2020-01-02
 
 -   Use built-in :mod:`importlib.metadata` on Python 3.8. :pr:`27`
+-   Update URL shown on PyPi
 
 
 Version 1.2.2
