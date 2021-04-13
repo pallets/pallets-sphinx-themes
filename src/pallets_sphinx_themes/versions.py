@@ -67,7 +67,7 @@ def readthedocs_versions(app):
     versions = []
 
     for slug, _ in config_versions:
-        dev = slug in {"master", "default", "latest"}
+        dev = slug in {"main", "master", "default", "latest"}
 
         if dev:
             name = "Development"
