@@ -1,5 +1,3 @@
-from __future__ import print_function
-
 import contextlib
 import shlex
 import subprocess
@@ -15,24 +13,6 @@ from docutils import nodes
 from docutils.parsers.rst import Directive
 from docutils.statemachine import ViewList
 from sphinx.domains import Domain
-
-
-if sys.version_info.major < 3:
-    # backport shlex.quote
-    # https://github.com/python/cpython/blob
-    # /65ef7425a32ee411d8047a4fad0fc6bb9ff733b1
-    # /Lib/shlex.py#L308-L319
-    import re
-
-    def quote(s):
-        if not s:
-            return "''"
-        if re.search(r"[^\w@%+=:,./-]", s) is None:
-            return s
-        return "'" + s.replace("'", "'\"'\"'") + "'"
-
-    shlex.quote = quote
-    del quote
 
 
 class EofEchoingStdin(EchoingStdin):
