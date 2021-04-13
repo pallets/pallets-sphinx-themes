@@ -36,7 +36,7 @@ def build_function_directive(name, aliases, func):
     If the filter is a Jinja async variant, it is unwrapped to its sync
     variant to get the docs and signature.
     """
-    if getattr(func, "asyncfiltervariant", False):
+    if getattr(func, "jinja_async_variant", False):
         # unwrap async filters to their normal variant
         func = inspect.unwrap(func)
 
@@ -54,10 +54,7 @@ def build_function_directive(name, aliases, func):
             doc = doc[1:]
             sig = m.group(1)
     else:
-        if any(
-            getattr(func, attr, False)
-            for attr in ("environmentfilter", "contextfilter", "evalcontextfilter")
-        ):
+        if getattr(func, "jinja_pass_arg", None) is not None:
             # remove the internal-only first argument from context filters
             params = list(sig.parameters.values())
 
