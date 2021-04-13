@@ -1,3 +1,11 @@
+Version 2.0.0
+=============
+
+Unreleased
+
+- Drop Python < 3.6.
+
+
 Version 1.2.3
 -------------
 
