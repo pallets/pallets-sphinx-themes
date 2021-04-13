@@ -6,17 +6,12 @@ import textwrap
 from collections import namedtuple
 
 from sphinx.builders._epub_base import EpubBuilder
+from sphinx.builders.singlehtml import SingleFileHTMLBuilder
 from sphinx.errors import ExtensionError
 
 from .theme_check import only_pallets_theme
 from .theme_check import set_is_pallets_theme
 from .versions import load_versions
-
-try:
-    from sphinx.builders.singlehtml import SingleFileHTMLBuilder
-except ImportError:
-    # Sphinx 1 compatibility
-    from sphinx.builders.html import SingleFileHTMLBuilder
 
 try:
     from importlib import metadata as importlib_metadata
