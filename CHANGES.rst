@@ -1,9 +1,11 @@
 Version 2.0.0
-=============
+-------------
 
 Unreleased
 
-- Drop Python < 3.6.
+-   Drop Python < 3.6.
+-   Update for Jinja 2.0.
+-   Update for Click 8.0.
 
 
 Version 1.2.3
