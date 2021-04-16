@@ -24,16 +24,16 @@ class EofEchoingStdin(EchoingStdin):
     """
 
     def _echo(self, rv):
-        eof = False
-
-        if rv[-1] == b"\x04"[0]:
-            rv = rv[:-1]
-            eof = True
-
-        self._output.write(rv)
+        eof = rv[-1] == b"\x04"[0]
 
         if eof:
-            self._output.write(b"^D\n")
+            rv = rv[:-1]
+
+        if not self._paused:
+            self._output.write(rv)
+
+            if eof:
+                self._output.write(b"^D\n")
 
         return rv
 
