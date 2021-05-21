@@ -8,6 +8,9 @@ Unreleased
     causing the issue again. :issue:`39`
 -   Remove ``html_context["readthedocs_docsearch"]`` for controlling
     whether Read the Docs' search is used. :issue:`40`
+-   Add an ``ethicalads.html`` sidebar to have Read the Docs always show
+    ads in the sidebar instead of other possible locations. The sidebar
+    is enabled by default at the end of the list. :issue:`41`
 
 
 Version 2.0.0
