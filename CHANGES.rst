@@ -1,3 +1,10 @@
+Version 2.0.1
+-------------
+
+-   Remove ``html_context["readthedocs_docsearch"]`` for controlling
+    whether Read the Docs' search is used. :issue:`40`
+
+
 Version 2.0.0
 -------------
 
