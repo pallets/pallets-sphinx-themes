@@ -1,7 +1,7 @@
 Version 2.0.1
 -------------
 
-Unreleased
+Released 2021-05-20
 
 -   Remove workaround for search URLs when using the ``dirhtml``
     builder. The issue has been fixed in Sphinx and the workaround was
