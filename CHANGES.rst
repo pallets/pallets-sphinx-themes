@@ -1,6 +1,11 @@
 Version 2.0.1
 -------------
 
+Unreleased
+
+-   Remove workaround for search URLs when using the ``dirhtml``
+    builder. The issue has been fixed in Sphinx and the workaround was
+    causing the issue again. :issue:`39`
 -   Remove ``html_context["readthedocs_docsearch"]`` for controlling
     whether Read the Docs' search is used. :issue:`40`
 
