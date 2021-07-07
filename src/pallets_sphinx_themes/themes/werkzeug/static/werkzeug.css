@@ -1,15 +1,34 @@
 @import url("pocoo.css");
 
+/* -- dark-theme --------------------------------------------------- */
+:root {
+  --link-color: #185f6d;
+  --link-hover-color: #2794aa;
+  --version-warning-color: #ff8c08;
+}
+
+:root.dark-theme {
+  --link-color: #89d6e5;
+  --link-hover-color: #5fc5da;
+  --version-warning-color: #c76a00;
+}
+
+:root.dark-theme img {
+  filter: none;
+}
+
+/* ----------------------------------------------------------------- */
+
 a, a.reference, a.footnote-reference {
-  color: #185f6d;
-  border-color: #185f6d;
+  color: var(--link-color);
+  border-color: var(--link-color);
 }
 
 a:hover {
-  color: #2794aa;
-  border-color: #2794aa;
+  color: var(--link-hover-color);
+  border-color: var(--link-hover-color);
 }
 
 p.version-warning {
-  background-color: #ff8c08;
+  background-color: var(--version-warning-color);
 }

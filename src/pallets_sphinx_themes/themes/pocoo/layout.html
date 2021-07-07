@@ -9,6 +9,24 @@
   {%- if page_canonical_url %}
     <link rel="canonical" href="{{ page_canonical_url }}">
   {%- endif %}
+  <script>
+    // Avoid dark theme blink issue on refresh
+    (function(){
+      const root = document.documentElement
+      const theme = localStorage.getItem('theme')
+      const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)')
+
+      if (theme == 'dark') {
+        root.className = 'dark-theme'
+      } else if (theme == 'light') {
+        root.removeAttribute('class')
+      } else {
+        if (prefersDarkScheme.matches) {
+          root.className = 'dark-theme'
+        }
+      }
+    })()
+  </script>
   {{ super() }}
 {%- endblock %}
 
@@ -37,4 +55,5 @@
 {% block footer %}
   {{ super() }}
   {{ js_tag("_static/version_warning_offset.js") }}
+  {{ js_tag("_static/theme.js") }}
 {% endblock %}

@@ -1,13 +1,25 @@
 @import url("pocoo.css");
 
+/* -- dark-theme --------------------------------------------------- */
+:root {
+  --link-color: #004b6b;
+  --link-hover-color: #6d4100;
+}
+
+:root.dark-theme {
+  --link-color: #a5a5a5;
+  --link-hover-color: #81d9ff;
+}
+/* ----------------------------------------------------------------- */
+
 a, a.reference, a.footnote-reference {
-  color: #004b6b;
-  border-color: #004b6b;
+  color: var(--link-color);
+  border-color: var(--link-color);
 }
 
 a:hover {
-  color: #6d4100;
-  border-color: #6d4100;
+  color: var(--link-hover-color);
+  border-color: var(--link-hover-color);
 }
 
 p.version-warning {

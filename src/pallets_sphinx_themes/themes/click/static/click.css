@@ -2,6 +2,22 @@
 @import url("https://fonts.googleapis.com/css?family=Ubuntu+Mono");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
 
+/* -- dark-theme --------------------------------------------------- */
+:root {
+  --body-color: #3e4349;
+  --link-color: #5d2cd1;
+  --link-hover-color: #7546e3;
+  --version-warning-color: #7546e3;
+}
+
+:root.dark-theme {
+  --body-color: #bdb8af;
+  --link-color: #6f43d7;
+  --link-hover-color: #7d51e5;
+  --version-warning-color: #3f189b;
+}
+/* ----------------------------------------------------------------- */
+
 body, pre, code {
   font-family: "Ubuntu Mono", "Consolas", "Menlo", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", monospace;
   font-size: 15px;
@@ -12,17 +28,17 @@ h1, h2, h3, h4, h5, h6, p.admonition-title, div.sphinxsidebar input {
 }
 
 div.body {
-  color: #3e4349;
+  color: var(--body-color);
 }
 
 a {
-  color: #5d2cd1;
+  color: var(--link-color);
 }
 
 a:hover {
-  color: #7546e3;
+  color: var(--link-hover-color);
 }
 
 p.version-warning {
-  background-color: #7546e3;
+  background-color: var(--version-warning-color);
 }
