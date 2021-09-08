@@ -4,36 +4,41 @@
 #
 #    pip-compile requirements/dev.in
 #
-appdirs==1.4.4
+backports.entry-points-selectable==1.1.0
     # via virtualenv
-cfgv==3.2.0
+cfgv==3.3.1
     # via pre-commit
-click==7.1.2
+click==8.0.1
     # via pip-tools
-distlib==0.3.1
+distlib==0.3.2
     # via virtualenv
 filelock==3.0.12
     # via virtualenv
-identify==2.2.3
+identify==2.2.13
     # via pre-commit
 nodeenv==1.6.0
     # via pre-commit
-pep517==0.10.0
+pep517==0.11.0
     # via pip-tools
-pip-tools==6.0.1
+pip-tools==6.2.0
     # via -r requirements/dev.in
-pre-commit==2.12.0
+platformdirs==2.3.0
+    # via virtualenv
+pre-commit==2.15.0
     # via -r requirements/dev.in
 pyyaml==5.4.1
     # via pre-commit
-six==1.15.0
+six==1.16.0
     # via virtualenv
 toml==0.10.2
-    # via
-    #   pep517
-    #   pre-commit
-virtualenv==20.4.3
     # via pre-commit
+tomli==1.2.1
+    # via pep517
+virtualenv==20.7.2
+    # via pre-commit
+wheel==0.37.0
+    # via pip-tools
 
 # The following packages are considered to be unsafe in a requirements file:
 # pip
+# setuptools
