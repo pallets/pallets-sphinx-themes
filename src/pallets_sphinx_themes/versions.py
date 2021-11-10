@@ -1,9 +1,8 @@
-import io
 import json
 import os
 from collections import namedtuple
 
-from jinja2 import contextfunction
+from jinja2 import pass_context
 from packaging import version as pv
 
 from .theme_check import only_pallets_theme
@@ -27,7 +26,7 @@ def local_versions(app):
 
     if isinstance(config_versions, str):
         if os.path.isfile(config_versions):
-            with io.open(config_versions, "rt", encoding="utf8") as f:
+            with open(config_versions, encoding="utf8") as f:
                 config_versions = json.load(f)
         else:
             config_versions = json.loads(config_versions)
@@ -97,7 +96,7 @@ def readthedocs_versions(app):
 
 
 def _is_version(value, placeholder="x"):
-    if value.endswith(".{}".format(placeholder)):
+    if value.endswith(f".{placeholder}"):
         value = value[: -(len(placeholder) + 1)]
 
     try:
@@ -119,11 +118,9 @@ class DocVersion(
         if _is_version(slug):
             name = "Version " + name
 
-        return super(DocVersion, cls).__new__(
-            cls, name, slug, version, latest, dev, current
-        )
+        return super().__new__(cls, name, slug, version, latest, dev, current)
 
-    @contextfunction
+    @pass_context
     def href(self, context):
         pathto = context["pathto"]
         master_doc = context["master_doc"]
@@ -134,7 +131,7 @@ class DocVersion(
         path = builder.get_target_uri(pagename)
         return "/".join((master, "..", self.slug, path))
 
-    @contextfunction
+    @pass_context
     def banner(self, context):
         if self.latest:
             return

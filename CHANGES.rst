@@ -7,6 +7,7 @@ Unreleased
     ".html" and replace with the correct dir URL. :issue:`47`
 -   ``canonical_url`` config is deprecated. Use Sphinx's built-in
     ``html_baseurl`` config instead. :pr:`53`
+-   Address deprecations in Jinja 2.0. :pr:`54`
 
 
 Version 2.0.1
