@@ -3,6 +3,11 @@ Version 2.0.2
 
 Unreleased
 
+-   Detect if Sphinx dirhtml builder is generating canonical URLs with
+    ".html" and replace with the correct dir URL. :issue:`47`
+-   ``canonical_url`` config is deprecated. Use Sphinx's built-in
+    ``html_baseurl`` config instead. :pr:`53`
+
 
 Version 2.0.1
 -------------
