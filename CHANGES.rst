@@ -1,3 +1,12 @@
+Version 2.1.0
+-------------
+
+Unreleased
+
+-   Drop support for Python 3.6.
+-   Require Sphinx >= 3.
+
+
 Version 2.0.2
 -------------
 
