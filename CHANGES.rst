@@ -1,7 +1,7 @@
 Version 2.0.2
 -------------
 
-Unreleased
+Released 2021-11-10
 
 -   Detect if Sphinx dirhtml builder is generating canonical URLs with
     ".html" and replace with the correct dir URL. :issue:`47`
