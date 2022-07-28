@@ -242,7 +242,7 @@ class RunExampleDirective(Directive):
             runner.close()
             raise
 
-        doc.append(".. sourcecode:: text", "")
+        doc.append(".. sourcecode:: shell-session", "")
         doc.append("", "")
 
         for line in rv:
