@@ -11,12 +11,12 @@ h1, h2, h3, h4, h5, h6, p.admonition-title, div.sphinxsidebar input {
 
 a {
   color: #b00;
-  border-color: #b00;
+  text-decoration-color: #b00;
 }
 
 a:hover {
   color: #fc5e1e;
-  border-color: #fc5e1e;
+  text-decoration-color: #fc5e1e;
 }
 
 p.version-warning {
