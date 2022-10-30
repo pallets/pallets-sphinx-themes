@@ -50,10 +50,23 @@ div.sphinxsidebar {
   color: #444;
 }
 
+div.sphinxsidebar li {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+div.sphinxsidebar li:hover {
+  overflow: visible;
+}
+
 div.sphinxsidebar a,
 div.sphinxsidebar a code {
   color: #444;
   border-color: #444;
+}
+
+div.sphinxsidebar a:hover {
+  background-color:#fff;
 }
 
 div.sphinxsidebar p.logo {
