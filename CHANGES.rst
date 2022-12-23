@@ -7,6 +7,14 @@ Unreleased
 -   Require Sphinx >= 3.
 
 
+Version 2.0.3
+-------------
+
+Released 2022-12-23
+
+-   Fix compatibility with ``packaging>=22``.
+
+
 Version 2.0.2
 -------------
 
