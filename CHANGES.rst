@@ -10,7 +10,7 @@ Unreleased
 Version 2.0.3
 -------------
 
-Released 2022-12-23
+Released 2022-12-24
 
 -   Fix compatibility with ``packaging>=22``.
 
