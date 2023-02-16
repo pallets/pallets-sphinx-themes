@@ -2,12 +2,12 @@
 
 a, a.reference, a.footnote-reference {
   color: #185f6d;
-  border-color: #185f6d;
+  text-decoration-color: #185f6d;
 }
 
 a:hover {
   color: #2794aa;
-  border-color: #2794aa;
+  text-decoration-color: #2794aa;
 }
 
 p.version-warning {
