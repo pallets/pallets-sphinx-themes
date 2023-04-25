@@ -74,23 +74,8 @@ def canonical_url(app: Sphinx, pagename, templatename, context, doctree):
     set. However, it builds a URL ending with ".html" when using the
     dirhtml builder, which is incorrect. Detect this and generate the
     correct URL for each page.
-
-    Also accepts the custom, deprecated ``canonical_url`` config as the
-    base URL. This will be removed in version 2.1.
     """
     base = app.config.html_baseurl
-
-    if not base and context.get("canonical_url"):
-        import warnings
-
-        warnings.warn(
-            "'canonical_url' config is deprecated and will be removed"
-            " in Pallets-Sphinx-Themes 2.1. Set Sphinx's 'html_baseurl'"
-            " config instead.",
-            DeprecationWarning,
-            stacklevel=2,
-        )
-        base = context["canonical_url"]
 
     if (
         not base

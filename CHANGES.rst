@@ -5,6 +5,7 @@ Unreleased
 
 -   Drop support for Python 3.6 and 3.7.
 -   Require Sphinx >= 3.
+-   Remove previously deprecated code.
 -   Fix table of contents overflow issue.
 
 
