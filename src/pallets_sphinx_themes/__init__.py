@@ -93,6 +93,7 @@ def canonical_url(app: Sphinx, pagename, templatename, context, doctree):
             " in Pallets-Sphinx-Themes 2.1. Set Sphinx's 'html_baseurl'"
             " config instead.",
             DeprecationWarning,
+            stacklevel=2,
         )
         base = context["canonical_url"]
 

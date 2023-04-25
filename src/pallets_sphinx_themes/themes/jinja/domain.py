@@ -64,13 +64,13 @@ def build_function_directive(name, aliases, func):
 
             sig = sig.replace(parameters=params)
 
-    result = ["", ".. function:: {}{}".format(name, sig), ""]
-    result.extend(["    {}".format(x) for x in doc])
+    result = ["", f".. function:: {name}{sig}", ""]
+    result.extend([f"    {x}" for x in doc])
 
     if aliases:
         result.append("")
-        alias_str = ", ".join(["``{}``".format(x) for x in sorted(aliases)])
-        result.append("    :aliases: {}".format(alias_str))
+        alias_str = ", ".join([f"``{x}``" for x in sorted(aliases)])
+        result.append(f"    :aliases: {alias_str}")
 
     return result
 
@@ -148,7 +148,7 @@ class MappedFunctionsDirective(SphinxDirective):
         :return: A list of rendered nodes.
         """
         # the reference markup to link to each name
-        names = [":func:`{}`".format(name) for name, _, _ in self.funcs]
+        names = [f":func:`{name}`" for name, _, _ in self.funcs]
         # total number of rows, the number of names divided by the
         # number of columns, plus one in case of overflow
         row_size = (len(names) // 5) + bool(len(names) % 5)
@@ -162,7 +162,7 @@ class MappedFunctionsDirective(SphinxDirective):
 
         # generate the markup for the csv-table directive
         result = ["", ".. csv-table::", "    :align: left", ""]
-        result.extend(["    {}".format(line) for line in out.getvalue().splitlines()])
+        result.extend([f"    {line}" for line in out.getvalue().splitlines()])
 
         # parse the generated markup into nodes
         result = StringList(result, "<jinja>")
@@ -227,9 +227,7 @@ class NodesDirective(SphinxDirective):
             # reference the parent node, except for the base node
             if cls.__base__ is not object:
                 lines.append("")
-                lines.append(
-                    "    :Node type: :class:`{}`".format(cls.__base__.__name__)
-                )
+                lines.append(f"    :Node type: :class:`{cls.__base__.__name__}`")
 
             lines.append("")
             children = cls.__subclasses__()
