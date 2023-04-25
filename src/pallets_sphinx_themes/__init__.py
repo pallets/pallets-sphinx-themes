@@ -4,6 +4,7 @@ import re
 import sys
 import textwrap
 from collections import namedtuple
+from importlib import metadata as importlib_metadata
 
 from sphinx.application import Sphinx
 from sphinx.builders._epub_base import EpubBuilder
@@ -14,12 +15,6 @@ from sphinx.errors import ExtensionError
 from .theme_check import only_pallets_theme
 from .theme_check import set_is_pallets_theme
 from .versions import load_versions
-
-try:
-    from importlib import metadata as importlib_metadata
-except ImportError:
-    # Python <3.8 compatibility
-    import importlib_metadata
 
 
 def setup(app):

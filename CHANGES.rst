@@ -3,8 +3,9 @@ Version 2.1.0
 
 Unreleased
 
--   Drop support for Python 3.6.
+-   Drop support for Python 3.6 and 3.7.
 -   Require Sphinx >= 3.
+-   Fix table of contents overflow issue.
 
 
 Version 2.0.3
