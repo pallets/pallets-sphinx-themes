@@ -6,7 +6,6 @@ import tempfile
 from functools import partial
 
 import click
-from click._compat import text_type
 from click.testing import CliRunner
 from click.testing import EchoingStdin
 from docutils import nodes
@@ -67,7 +66,7 @@ def patch_modules():
 class ExampleRunner(CliRunner):
     def __init__(self):
         super().__init__(echo_stdin=True)
-        self.namespace = {"click": click, "__file__": "dummy.py", "str": text_type}
+        self.namespace = {"click": click, "__file__": "dummy.py"}
 
     @contextlib.contextmanager
     def isolation(self, *args, **kwargs):
