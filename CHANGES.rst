@@ -3,6 +3,8 @@ Version 2.1.1
 
 Unreleased
 
+-   Dotted underlines on links are smaller. :issue:`70`
+
 
 Version 2.1.0
 -------------

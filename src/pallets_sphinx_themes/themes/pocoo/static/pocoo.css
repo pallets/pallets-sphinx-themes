@@ -183,6 +183,7 @@ a {
   text-decoration: underline;
   text-decoration-style: dotted;
   text-decoration-color: #000;
+  text-decoration-thickness: 1px;
 }
 
 a:hover {
