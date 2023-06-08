@@ -1,7 +1,7 @@
 Version 2.1.1
 -------------
 
-Unreleased
+Released 2023-06-08
 
 -   Remove leftover Python 2 compatibility code. :pr:`69`
 -   Dotted underlines on links are smaller. :issue:`70`
