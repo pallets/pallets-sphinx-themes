@@ -117,9 +117,7 @@ class ExampleRunner(CliRunner):
         if prog_name is None:
             prog_name = cli.name.replace("_", "-")
 
-        output_lines.append(
-            "$ {} {}".format(prog_name, " ".join(shlex.quote(x) for x in args)).rstrip()
-        )
+        output_lines.append(f"$ {prog_name} {shlex.join(args)}".rstrip())
         # remove "python" from command
         prog_name = prog_name.rsplit(" ", 1)[-1]
 
