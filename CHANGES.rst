@@ -5,6 +5,7 @@ Unreleased
 
 -   Use modern packaging metadata with ``pyproject.toml`` instead of ``setup.cfg``.
 -   Use ``flit_core`` instead of ``setuptools`` as build backend.
+-   Compatibility with changes in Sphinx 7.3. :pr:`100`
 
 
 Version 2.1.1
