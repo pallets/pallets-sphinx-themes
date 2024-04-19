@@ -151,9 +151,8 @@ def get_version(name, version_length=2, placeholder="x"):
     except ImportError:
         print(
             textwrap.fill(
-                "'{name}' must be installed to build the documentation."
-                " Install from source using `pip install -e .` in a"
-                " virtualenv.".format(name=name)
+                f"'{name}' must be installed to build the documentation."
+                " Install from source using `pip install -e .` in a virtualenv."
             )
         )
         sys.exit(1)

@@ -1,5 +1,0 @@
-include CHANGES.rst
-graft src/pallets_sphinx_themes
-graft docs
-prune docs/_build
-global-exclude *.pyc
