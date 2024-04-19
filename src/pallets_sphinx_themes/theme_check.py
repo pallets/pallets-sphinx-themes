@@ -1,5 +1,7 @@
 from functools import wraps
 
+from sphinx.theming import HTMLThemeFactory
+
 
 def set_is_pallets_theme(app):
     """Set the ``is_pallets_theme`` config to ``True`` if the current
@@ -10,14 +12,12 @@ def set_is_pallets_theme(app):
 
     theme = getattr(app.builder, "theme", None)
 
-    while theme is not None:
-        if theme.name == "pocoo":
-            app.config.is_pallets_theme = True
-            break
-
-        theme = theme.base
-    else:
+    if theme is None:
         app.config.is_pallets_theme = False
+        return
+
+    pocoo_dir = HTMLThemeFactory(app).create("pocoo").get_theme_dirs()[0]
+    app.config.is_pallets_theme = pocoo_dir in theme.get_theme_dirs()
 
 
 def only_pallets_theme(default=None):
