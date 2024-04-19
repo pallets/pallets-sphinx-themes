@@ -144,10 +144,10 @@ class DocVersion(
         if self.dev:
             return (
                 "This is the development version. The latest stable"
-                ' version is <a href="{href}">{latest}</a>.'
-            ).format(latest=latest.name, href=latest.href(context))
+                f' version is <a href="{latest.href(context)}">{latest.name}</a>.'
+            )
 
         return (
             "This is an old version. The latest stable version is"
-            ' <a href="{href}">{latest}</a>.'
-        ).format(latest=latest.name, href=latest.href(context))
+            f' <a href="{latest.href(context)}">{latest.name}</a>.'
+        )

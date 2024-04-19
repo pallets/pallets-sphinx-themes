@@ -1,0 +1,67 @@
+[project]
+name = "Pallets-Sphinx-Themes"
+version = "2.1.1"
+description = "Sphinx themes for Pallets and related projects."
+readme = "README.md"
+license = { file = "LICENSE.txt" }
+maintainers = [{ name = "Pallets", email = "contact@palletsprojects.com" }]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Framework :: Sphinx",
+    "Framework :: Sphinx :: Theme",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: BSD License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Topic :: Documentation",
+    "Topic :: Documentation :: Sphinx",
+    "Topic :: Software Development :: Documentation",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "packaging",
+    "sphinx>=3",
+]
+
+[project.urls]
+Donate = "https://palletsprojects.com/donate"
+Source = "https://github.com/pallets/pallets-sphinx-themes/"
+Chat = "https://discord.gg/pallets"
+
+[project.entry-points."pygments.styles"]
+pocoo = "pallets_sphinx_themes.themes.pocoo:PocooStyle"
+jinja = "pallets_sphinx_themes.themes.jinja:JinjaStyle"
+
+[build-system]
+requires = ["flit_core<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.flit.module]
+name = "pallets_sphinx_themes"
+
+[tool.flit.sdist]
+include = [
+    "requirements/",
+    "CHANGES.rst",
+]
+
+[tool.ruff]
+src = ["src"]
+fix = true
+show-fixes = true
+output-format = "full"
+
+[tool.ruff.lint]
+select = [
+    "B",  # flake8-bugbear
+    "E",  # pycodestyle error
+    "F",  # pyflakes
+    "I",  # isort
+    "UP",  # pyupgrade
+    "W",  # pycodestyle warning
+]
+ignore-init-module-imports = true
+
+[tool.ruff.lint.isort]
+force-single-line = true
+order-by-type = false
