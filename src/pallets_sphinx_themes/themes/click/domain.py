@@ -255,6 +255,11 @@ class ClickDomain(Domain):
     label = "Click"
     directives = {"example": DeclareExampleDirective, "run": RunExampleDirective}
 
+    def merge_domaindata(self, docnames, otherdata):
+        # Needed to support parallel build.
+        # Not using self.data -- nothing to merge.
+        pass
+
 
 def delete_example_runner_state(app, doctree):
     """Close and remove the :class:`ExampleRunner` instance once the
