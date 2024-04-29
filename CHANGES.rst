@@ -1,9 +1,10 @@
 Version 2.1.3
 -------------
 
-Unreleased
+Released 2024-04-29
 
 -   Allow Sphinx's parallel build feature. :issue:`88`
+
 
 Version 2.1.2
 -------------
