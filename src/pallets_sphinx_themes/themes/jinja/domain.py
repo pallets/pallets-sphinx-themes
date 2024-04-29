@@ -258,6 +258,11 @@ class JinjaDomain(Domain):
         "nodes": NodesDirective,
     }
 
+    def merge_domaindata(self, docnames, otherdata):
+        # Needed to support parallel build.
+        # Not using self.data -- nothing to merge.
+        pass
+
 
 def setup(app):
     app.add_domain(JinjaDomain)
