@@ -38,7 +38,7 @@ pyproject-api==1.6.1
     # via tox
 pyyaml==6.0.1
     # via pre-commit
-tox==4.15.0
+tox==4.15.1
     # via -r dev.in
 virtualenv==20.25.3
     # via
