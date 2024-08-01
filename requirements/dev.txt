@@ -14,7 +14,7 @@ colorama==0.4.6
     # via tox
 distlib==0.3.8
     # via virtualenv
-filelock==3.13.4
+filelock==3.15.4
     # via
     #   tox
     #   virtualenv
@@ -22,25 +22,25 @@ identify==2.5.35
     # via pre-commit
 nodeenv==1.8.0
     # via pre-commit
-packaging==24.0
+packaging==24.1
     # via
     #   pyproject-api
     #   tox
-platformdirs==4.2.0
+platformdirs==4.2.2
     # via
     #   tox
     #   virtualenv
-pluggy==1.4.0
+pluggy==1.5.0
     # via tox
-pre-commit==3.7.1
+pre-commit==3.8.0
     # via -r dev.in
-pyproject-api==1.6.1
+pyproject-api==1.7.1
     # via tox
 pyyaml==6.0.1
     # via pre-commit
-tox==4.15.1
+tox==4.16.0
     # via -r dev.in
-virtualenv==20.25.3
+virtualenv==20.26.3
     # via
     #   pre-commit
     #   tox
