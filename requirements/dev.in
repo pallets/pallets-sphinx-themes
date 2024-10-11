@@ -1,2 +1,3 @@
+-r docs.in
 pre-commit
 tox
