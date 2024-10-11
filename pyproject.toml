@@ -1,6 +1,6 @@
 [project]
 name = "Pallets-Sphinx-Themes"
-version = "2.1.3"
+version = "2.2.0.dev"
 description = "Sphinx themes for Pallets and related projects."
 readme = "README.md"
 license = { file = "LICENSE.txt" }
