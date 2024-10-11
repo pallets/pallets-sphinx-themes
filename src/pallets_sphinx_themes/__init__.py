@@ -5,6 +5,7 @@ import sys
 import textwrap
 from collections import namedtuple
 from importlib import metadata as importlib_metadata
+from urllib.parse import urlsplit
 
 from sphinx.application import Sphinx
 from sphinx.builders._epub_base import EpubBuilder
@@ -29,7 +30,7 @@ def setup(app):
     app.add_config_value("is_pallets_theme", None, "html")
 
     app.connect("builder-inited", set_is_pallets_theme)
-    app.connect("builder-inited", load_versions)
+    app.connect("builder-inited", find_base_canonical_url)
     app.connect("html-collect-pages", add_404_page)
     app.connect("html-page-context", canonical_url)
 
@@ -66,6 +67,21 @@ def add_404_page(app):
 
     if not is_epub and "404" not in config_pages:
         yield ("404", {}, "404.html")
+
+
+@only_pallets_theme()
+def find_base_canonical_url(app: Sphinx) -> None:
+    """When building on Read the Docs, build the base canonical URL from the
+    environment variable if it's not given in the config. Read the Docs has a
+    special `/page/<path>` rule that redirects any path to the current version
+    of the docs, so that's used as the canonical link.
+    """
+    if app.config.html_baseurl:
+        return
+
+    if "READTHEDOCS_CANONICAL_URL" in os.environ:
+        parts = urlsplit(os.environ["READTHEDOCS_CANONICAL_URL"])
+        app.config.html_baseurl = f"{parts.scheme}://{parts.netloc}/page/"
 
 
 @only_pallets_theme()
