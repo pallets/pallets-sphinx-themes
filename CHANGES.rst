@@ -5,6 +5,9 @@ Unreleased
 
 -   Get canonical URL from environment variable when building on Read the Docs.
     :pr:`117`
+-   New version warning banner. Use JavaScript to query PyPI when viewing a
+    page, rather than baking the warning into the build. New builds of old
+    versions are no longer required for the banner to be correct. :pr:`117`
 
 
 Version 2.1.3

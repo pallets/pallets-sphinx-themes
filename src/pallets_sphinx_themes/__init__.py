@@ -15,7 +15,6 @@ from sphinx.errors import ExtensionError
 
 from .theme_check import only_pallets_theme
 from .theme_check import set_is_pallets_theme
-from .versions import load_versions
 
 
 def setup(app):
@@ -31,6 +30,7 @@ def setup(app):
 
     app.connect("builder-inited", set_is_pallets_theme)
     app.connect("builder-inited", find_base_canonical_url)
+    app.connect("builder-inited", add_theme_files)
     app.connect("html-collect-pages", add_404_page)
     app.connect("html-page-context", canonical_url)
 
@@ -82,6 +82,20 @@ def find_base_canonical_url(app: Sphinx) -> None:
     if "READTHEDOCS_CANONICAL_URL" in os.environ:
         parts = urlsplit(os.environ["READTHEDOCS_CANONICAL_URL"])
         app.config.html_baseurl = f"{parts.scheme}://{parts.netloc}/page/"
+
+
+@only_pallets_theme()
+def add_theme_files(app: Sphinx) -> None:
+    # Add the JavaScript for the version warning banner. Include the project and
+    # version as data attributes that the script will access. The project name
+    # is assumed to be the PyPI name, and is normalized to avoid a redirect.
+    app.add_js_file(
+        "describe_version.js",
+        **{
+            "data-project": re.sub(r"[-_.]+", "-", app.config.project).lower(),
+            "data-version": app.config.version,
+        },
+    )
 
 
 @only_pallets_theme()

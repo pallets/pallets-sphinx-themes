@@ -11,23 +11,9 @@
   {% endif %}
 {% endblock %}
 
-{% set version_warning = current_version.banner() if current_version %}
-
-{% block document %}
-  {%- if version_warning %}
-    <p class="version-warning"><strong>Warning:</strong> {{ version_warning }}</p>
-  {%- endif %}
-  {{- super() }}
-{%- endblock %}
-
 {% block relbar2 %}{% endblock %}
 
 {% block sidebar2 %}
   <span id="sidebar-top"></span>
   {{- super() }}
 {%- endblock %}
-
-{% block footer %}
-  {{ super() }}
-  {{ js_tag("_static/version_warning_offset.js") }}
-{% endblock %}
