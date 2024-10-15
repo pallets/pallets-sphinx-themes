@@ -5,6 +5,7 @@ import sys
 import textwrap
 from collections import namedtuple
 from importlib import metadata as importlib_metadata
+from urllib.parse import urlsplit
 
 from sphinx.application import Sphinx
 from sphinx.builders._epub_base import EpubBuilder
@@ -14,7 +15,6 @@ from sphinx.errors import ExtensionError
 
 from .theme_check import only_pallets_theme
 from .theme_check import set_is_pallets_theme
-from .versions import load_versions
 
 
 def setup(app):
@@ -29,7 +29,8 @@ def setup(app):
     app.add_config_value("is_pallets_theme", None, "html")
 
     app.connect("builder-inited", set_is_pallets_theme)
-    app.connect("builder-inited", load_versions)
+    app.connect("builder-inited", find_base_canonical_url)
+    app.connect("builder-inited", add_theme_files)
     app.connect("html-collect-pages", add_404_page)
     app.connect("html-page-context", canonical_url)
 
@@ -66,6 +67,35 @@ def add_404_page(app):
 
     if not is_epub and "404" not in config_pages:
         yield ("404", {}, "404.html")
+
+
+@only_pallets_theme()
+def find_base_canonical_url(app: Sphinx) -> None:
+    """When building on Read the Docs, build the base canonical URL from the
+    environment variable if it's not given in the config. Read the Docs has a
+    special `/page/<path>` rule that redirects any path to the current version
+    of the docs, so that's used as the canonical link.
+    """
+    if app.config.html_baseurl:
+        return
+
+    if "READTHEDOCS_CANONICAL_URL" in os.environ:
+        parts = urlsplit(os.environ["READTHEDOCS_CANONICAL_URL"])
+        app.config.html_baseurl = f"{parts.scheme}://{parts.netloc}/page/"
+
+
+@only_pallets_theme()
+def add_theme_files(app: Sphinx) -> None:
+    # Add the JavaScript for the version warning banner. Include the project and
+    # version as data attributes that the script will access. The project name
+    # is assumed to be the PyPI name, and is normalized to avoid a redirect.
+    app.add_js_file(
+        "describe_version.js",
+        **{
+            "data-project": re.sub(r"[-_.]+", "-", app.config.project).lower(),
+            "data-version": app.config.version,
+        },
+    )
 
 
 @only_pallets_theme()
