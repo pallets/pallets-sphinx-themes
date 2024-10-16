@@ -21,6 +21,7 @@ requires-python = ">=3.8"
 dependencies = [
     "packaging",
     "sphinx>=3",
+    "sphinx-notfound-page",
 ]
 
 [project.urls]

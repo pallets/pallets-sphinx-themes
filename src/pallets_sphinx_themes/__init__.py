@@ -8,7 +8,6 @@ from importlib import metadata as importlib_metadata
 from urllib.parse import urlsplit
 
 from sphinx.application import Sphinx
-from sphinx.builders._epub_base import EpubBuilder
 from sphinx.builders.dirhtml import DirectoryHTMLBuilder
 from sphinx.builders.singlehtml import SingleFileHTMLBuilder
 from sphinx.errors import ExtensionError
@@ -28,10 +27,26 @@ def setup(app):
 
     app.add_config_value("is_pallets_theme", None, "html")
 
+    # Use the sphinx-notfound-page extension to generate a 404 page with valid
+    # URLs. Only configure it if it's not already configured.
+    if "notfound.extension" not in app.config.extensions:
+        app.config.extensions.append("notfound.extension")
+        app.config.notfound_context = {
+            "title": "Page Not Found",
+            "body": """<h1>Page Not Found</h1>
+            <p>
+              The page you requested does not exist. You may have followed a bad
+              link, or the page may have been moved or removed.
+            """,
+        }
+
+        if "READTHEDOCS" not in os.environ:
+            # Disable the default prefix outside of Read the Docs.
+            app.config.notfound_urls_prefix = None
+
     app.connect("builder-inited", set_is_pallets_theme)
     app.connect("builder-inited", find_base_canonical_url)
     app.connect("builder-inited", add_theme_files)
-    app.connect("html-collect-pages", add_404_page)
     app.connect("html-page-context", canonical_url)
 
     try:
@@ -55,18 +70,6 @@ def setup(app):
 
     own_release, _ = get_version(__name__)
     return {"version": own_release, "parallel_read_safe": True}
-
-
-@only_pallets_theme(default=())
-def add_404_page(app):
-    """Build an extra ``404.html`` page if no ``"404"`` key is in the
-    ``html_additional_pages`` config.
-    """
-    is_epub = isinstance(app.builder, EpubBuilder)
-    config_pages = app.config.html_additional_pages
-
-    if not is_epub and "404" not in config_pages:
-        yield ("404", {}, "404.html")
 
 
 @only_pallets_theme()

@@ -8,6 +8,8 @@ Unreleased
 -   New version warning banner. Use JavaScript to query PyPI when viewing a
     page, rather than baking the warning into the build. New builds of old
     versions are no longer required for the banner to be correct. :pr:`117`
+-   Generate 404 page using the sphinx-notfound-page extension. This fixes the
+    URLs when the page is hosted so that it loads the CSS. :issue:`34`
 
 
 Version 2.1.3
