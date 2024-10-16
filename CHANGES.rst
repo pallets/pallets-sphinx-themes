@@ -12,6 +12,8 @@ Unreleased
     URLs when the page is hosted so that it loads the CSS. :issue:`34`
 -   Remove handling for ``singlehtml_sidebars`` config which predated Sphinx's
     support. :pr:`119`
+-   Remove "babel" and "platter" theme variants which were undocumented and did
+    not appear to be used by the relevant projects. :pr:`120`
 
 
 Version 2.1.3
