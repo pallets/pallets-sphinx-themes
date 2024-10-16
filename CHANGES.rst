@@ -1,7 +1,7 @@
 Version 2.2.0
 -------------
 
-Unreleased
+Released 2024-10-15
 
 -   Get canonical URL from environment variable when building on Read the Docs.
     :pr:`117`
