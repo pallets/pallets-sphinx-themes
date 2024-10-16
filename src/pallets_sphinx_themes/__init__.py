@@ -9,7 +9,6 @@ from urllib.parse import urlsplit
 
 from sphinx.application import Sphinx
 from sphinx.builders.dirhtml import DirectoryHTMLBuilder
-from sphinx.builders.singlehtml import SingleFileHTMLBuilder
 from sphinx.errors import ExtensionError
 
 from .theme_check import only_pallets_theme
@@ -54,13 +53,6 @@ def setup(app):
         app.connect("autodoc-process-docstring", cut_module_meta)
     except ExtensionError:
         pass
-
-    try:
-        app.add_config_value("singlehtml_sidebars", None, "html")
-    except ExtensionError:
-        pass
-    else:
-        app.connect("builder-inited", singlehtml_sidebars)
 
     from .themes import click as click_ext
     from .themes import jinja as jinja_ext
@@ -122,19 +114,6 @@ def canonical_url(app: Sphinx, pagename, templatename, context, doctree):
     # generates .html URLs.
     target = app.builder.get_target_uri(pagename)
     context["pageurl"] = base + target
-
-
-@only_pallets_theme()
-def singlehtml_sidebars(app):
-    """When using a ``singlehtml`` builder, replace the
-    ``html_sidebars`` config with ``singlehtml_sidebars``. This can be
-    used to change what sidebars are rendered for the single page called
-    ``"index"`` by the builder.
-    """
-    if app.config.singlehtml_sidebars is not None and isinstance(
-        app.builder, SingleFileHTMLBuilder
-    ):
-        app.config.html_sidebars = app.config.singlehtml_sidebars
 
 
 @only_pallets_theme()

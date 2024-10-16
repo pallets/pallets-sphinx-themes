@@ -10,6 +10,8 @@ Unreleased
     versions are no longer required for the banner to be correct. :pr:`117`
 -   Generate 404 page using the sphinx-notfound-page extension. This fixes the
     URLs when the page is hosted so that it loads the CSS. :issue:`34`
+-   Remove handling for ``singlehtml_sidebars`` config which predated Sphinx's
+    support. :pr:`119`
 
 
 Version 2.1.3
