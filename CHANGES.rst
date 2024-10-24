@@ -1,7 +1,7 @@
 Version 2.3.0
 -------------
 
-Unreleased
+Released 2024-10-24
 
 -   When getting the canonical URL on Read the Docs, replace the path with
     ``/en/stable/`` instead of ``/page/``. This can be configured with
