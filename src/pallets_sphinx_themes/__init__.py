@@ -26,6 +26,7 @@ def setup(app):
 
     app.add_config_value("is_pallets_theme", None, "html")
     app.add_config_value("rtd_canonical_path", "/en/stable/", "html")
+    app.add_config_value("version_banner", True, "html")
 
     # Use the sphinx-notfound-page extension to generate a 404 page with valid
     # URLs. Only configure it if it's not already configured.
@@ -82,16 +83,25 @@ def find_base_canonical_url(app: Sphinx) -> None:
 
 @only_pallets_theme()
 def add_theme_files(app: Sphinx) -> None:
-    # Add the JavaScript for the version warning banner. Include the project and
-    # version as data attributes that the script will access. The project name
-    # is assumed to be the PyPI name, and is normalized to avoid a redirect.
-    app.add_js_file(
-        "describe_version.js",
-        **{
-            "data-project": re.sub(r"[-_.]+", "-", app.config.project).lower(),
-            "data-version": app.config.version,
-        },
-    )
+    # Add the JavaScript for the version warning banner if ``version_banner`` is
+    # enabled. On Read the Docs, don't include it for stable or PR builds.
+    # Include the project and version as data attributes that the script will
+    # access. The project name is assumed to be the PyPI name, and is normalized
+    # to avoid a redirect.
+    rtd_version = os.environ.get("READTHEDOCS_VERSION")
+    rtd_version_type = os.environ.get("READTHEDOCS_VERSION_TYPE")
+
+    if app.config.version_banner and (
+        rtd_version is None  # not on read the docs
+        or (rtd_version != "stable" and rtd_version_type in {"branch", "tag"})
+    ):
+        app.add_js_file(
+            "describe_version.js",
+            **{
+                "data-project": re.sub(r"[-_.]+", "-", app.config.project).lower(),
+                "data-version": app.config.version,
+            },
+        )
 
 
 @only_pallets_theme()
