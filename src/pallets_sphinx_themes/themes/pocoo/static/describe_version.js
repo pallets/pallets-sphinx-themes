@@ -63,7 +63,7 @@ function compareVersions(a, b) {
 /**
  * Get the list of released versions for the project from PyPI. Prerelease and
  * development versions are discarded. The list is sorted in descending order,
- * latest version first.
+ * highest version first.
  *
  * This will be called on every page load. To avoid making excessive requests to
  * PyPI, the result is cached for 1 day. PyPI also sends cache headers, so a
@@ -103,8 +103,9 @@ async function getReleasedVersions(name) {
 }
 
 /**
- * Get the latest released version of the project from PyPI, and compare the
- * version being documented. Return the
+ * Get the highest released version of the project from PyPI, and compare the
+ * version being documented. Returns a list of two values, the comparison
+ * result and the highest version.
  *
  * @param name The normalized PyPI project name.
  * @param value The version being documented.
@@ -122,55 +123,63 @@ async function describeVersion(name, value) {
     return [1, null]
   }
 
-  let latestVersion = releasedVersions[0]
-  let compared = compareVersions(currentVersion, latestVersion)
+  let highestVersion = releasedVersions[0]
+  let compared = compareVersions(currentVersion, highestVersion)
 
   if (compared === 1) {
-    return [1, latestVersion]
+    return [1, highestVersion]
   }
 
-  // If the current version including trailing zeros is a prefix of the latest
-  // version, then these are the latest docs. For example, 2.0.x becomes 2.0,
+  // If the current version including trailing zeros is a prefix of the highest
+  // version, then these are the stable docs. For example, 2.0.x becomes 2.0,
   // which is a prefix of 2.0.3. If we were just looking at the compare result,
   // it would incorrectly be marked as an old version.
-  if (currentVersion.parts.every((n, i) => n === latestVersion.parts[i])) {
-    return [0, latestVersion]
+  if (currentVersion.parts.every((n, i) => n === highestVersion.parts[i])) {
+    return [0, highestVersion]
   }
 
-  return [-1, latestVersion]
+  return [-1, highestVersion]
 }
 
 /**
- * Compare the version being documented to the latest version, and display a
- * warning banner if it is not the latest version.
+ * Compare the version being documented to the highest released version, and
+ * display a warning banner if it is not the highest version.
  *
  * @param project The normalized PyPI project name.
  * @param version The version being documented.
  * @returns {Promise<void>}
  */
 async function createBanner(project, version) {
-  let [desc, latest] = await describeVersion(project, version)
+  let [compared, stable] = await describeVersion(project, version)
 
-  // No banner if this is the latest version or there are no other versions.
-  if (desc === 0 || latest === null) {
+  // No banner if this is the highest version or there are no other versions.
+  if (compared === 0 || stable === null) {
     return
   }
 
   let banner = document.createElement("p")
   banner.className = "version-warning"
 
-  if (desc === 1) {
+  if (compared === 1) {
     banner.textContent = "This is the development version. The stable version is "
-  } else if (desc === -1) {
+  } else if (compared === -1) {
     banner.textContent = "This is an old version. The current version is "
   }
 
-  let link = document.createElement("a")
-  link.href = document.querySelector('link[rel="canonical"]').href
-  link.textContent = latest.value
-  banner.append(link, ".")
-  document.getElementsByClassName("document")[0].prepend(banner)
+  let canonical = document.querySelector('link[rel="canonical"]')
 
+  if (canonical !== null) {
+    // If a canonical URL is available, the version is a link to it.
+    let link = document.createElement("a")
+    link.href = canonical.href
+    link.textContent = stable.value
+    banner.append(link, ".")
+  } else {
+    // Otherwise, the version is text only.
+    banner.append(stable.value, ".")
+  }
+
+  document.getElementsByClassName("document")[0].prepend(banner)
   // Set scroll-padding-top to prevent the banner from overlapping anchors.
   // It's also set in CSS assuming the banner text is only 1 line.
   let bannerStyle = window.getComputedStyle(banner)
