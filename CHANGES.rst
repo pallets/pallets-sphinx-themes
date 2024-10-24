@@ -3,6 +3,10 @@ Version 2.3.0
 
 Unreleased
 
+-   When getting the canonical URL on Read the Docs, replace the path with
+    ``/en/stable/`` instead of ``/page/``. This can be configured with
+    ``rtd_canonical_path``. :pr:`119`
+
 
 Version 2.2.0
 -------------

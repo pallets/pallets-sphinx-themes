@@ -25,6 +25,7 @@ def setup(app):
             app.add_html_theme(name, path)
 
     app.add_config_value("is_pallets_theme", None, "html")
+    app.add_config_value("rtd_canonical_path", "/en/stable/", "html")
 
     # Use the sphinx-notfound-page extension to generate a 404 page with valid
     # URLs. Only configure it if it's not already configured.
@@ -67,16 +68,16 @@ def setup(app):
 @only_pallets_theme()
 def find_base_canonical_url(app: Sphinx) -> None:
     """When building on Read the Docs, build the base canonical URL from the
-    environment variable if it's not given in the config. Read the Docs has a
-    special `/page/<path>` rule that redirects any path to the current version
-    of the docs, so that's used as the canonical link.
+    environment variable if it's not given in the config. Replace the path with
+    ``rtd_canonical_path``, which defaults to ``/en/stable/``.
     """
     if app.config.html_baseurl:
         return
 
     if "READTHEDOCS_CANONICAL_URL" in os.environ:
         parts = urlsplit(os.environ["READTHEDOCS_CANONICAL_URL"])
-        app.config.html_baseurl = f"{parts.scheme}://{parts.netloc}/page/"
+        path = app.config.rtd_canonical_path
+        app.config.html_baseurl = f"{parts.scheme}://{parts.netloc}{path}"
 
 
 @only_pallets_theme()
