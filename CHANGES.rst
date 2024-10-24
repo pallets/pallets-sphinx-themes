@@ -5,7 +5,10 @@ Unreleased
 
 -   When getting the canonical URL on Read the Docs, replace the path with
     ``/en/stable/`` instead of ``/page/``. This can be configured with
-    ``rtd_canonical_path``. :pr:`119`
+    ``rtd_canonical_path``. :pr:`122`
+-   The version banner can be disabled by setting ``version_banner = False``.
+    On Read the Docs, it is disabled when building the ``stable`` version or
+    PRs. :pr:`123`
 
 
 Version 2.2.0
