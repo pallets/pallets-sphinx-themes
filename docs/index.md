@@ -1,36 +1,23 @@
 # Pallets Sphinx Themes
 
+[![PyPI Downloads](https://static.pepy.tech/badge/pallets-sphinx-themes)](https://pepy.tech/projects/pallets-sphinx-themes)
+[![BSD 3 Clause](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/license/BSD-3-Clause)
+
 The Documentation for the Pallets Sphinx Themes.
 
-The Pallets Sphinx Themes are a series of themes that are used across multiple pallets projects, such as [Flask](https://flask.palletsprojects.com/en/stable/), [Jinja](https://jinja.palletsprojects.com/en/stable/), [Click](https://flask.palletsprojects.com/en/stable/), and [Werkzeug](https://werkzeug.palletsprojects.com/en/stable/).
+The Pallets Sphinx Themes are a series of themes that are used across the pallets projects documentation. The themes would then later inspire other Sphinx themes such as [Kenneth Reitz’s](https://kennethreitz.org) [“krTheme” Sphinx theme](https://github.com/kennethreitz/kr-sphinx-themes) (it’s the one used in his Requests project), and objectively the most popular one, the [Alabaster](https://alabaster.readthedocs.io/en/latest/) theme.
 
-## Installation
+This package ships 4 Sphinx themes for usage:
+- Flask
+- Jinja
+- Click
+- Werkzeug
 
-The 4 themes are available as a PyPI package, and can be installed with:
-
-``` console
-pip install Pallets-Sphinx-Themes
-```
-
-Afterwards, you need to explicitly activate the themes by adding it to your list of extensions in `conf.py`:
-
-``` python
-extensions = [
-    "pallets_sphinx_themes",
-    ...
-]
-```
-
-And set your `html_theme` to the desired theme. For example, if you want to use the Flask theme, enable it through:
-
-``` python
-html_theme = "flask"
-```
+If you are writing an extension for a project, be sure to use the appropriate theme to make your documentation look consistent. For example, if you are writing a Flask extension, use the Flask theme.
 
 ## Navigation
 
-After completing the installation, you can move onto actually setting up the theme.
-
 ```{toctree}
-setup.md
+installation
+setup
 ```
