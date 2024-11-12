@@ -37,7 +37,7 @@ myst_heading_anchors = 2
 # -- HTML Theming -----------------------------------------------------------------
 
 html_theme = "flask"
-html_static_path = ['_static']
+html_static_path = ["_static"]
 templates_path = ["_templates"]
 html_logo = "_static/pallets.png"
 html_context = {
@@ -45,13 +45,27 @@ html_context = {
         ProjectLink("Donate", "https://palletsprojects.com/donate"),
         ProjectLink("PyPI Releases", "https://pypi.org/project/Pallets-Sphinx-Themes/"),
         ProjectLink("Source Code", "https://github.com/pallets/pallets-sphinx-themes/"),
-        ProjectLink("Issue Tracker", "https://github.com/pallets/pallets-sphinx-themes/issues/"),
+        ProjectLink(
+            "Issue Tracker", "https://github.com/pallets/pallets-sphinx-themes/issues/"
+        ),
         ProjectLink("Chat", "https://discord.gg/pallets"),
     ]
 }
 html_sidebars = {
-    "index": ["project.html", "localtoc.html", "searchbox.html", "ethicalads.html", "octicon.html"],
-    "**": ["localtoc.html", "relations.html", "searchbox.html", "ethicalads.html", "octicon.html"],
+    "index": [
+        "project.html",
+        "localtoc.html",
+        "searchbox.html",
+        "ethicalads.html",
+        "octicon.html",
+    ],
+    "**": [
+        "localtoc.html",
+        "relations.html",
+        "searchbox.html",
+        "ethicalads.html",
+        "octicon.html",
+    ],
 }
 singlehtml_sidebars = {"index": ["project.html", "localtoc.html", "ethicalads.html"]}
 html_title = f"{project} Documentation ({version})"
