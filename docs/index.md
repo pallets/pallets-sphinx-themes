@@ -15,9 +15,12 @@ This package ships 4 Sphinx themes for usage:
 
 If you are writing an extension for a project, be sure to use the appropriate theme to make your documentation look consistent. For example, if you are writing a Flask extension, use the Flask theme.
 
+When using these docs, viewing the source on [GitHub](https://github.com/pallets/pallets-sphinx-themes), and refering to this documents examples is recommended.
+
 ## Navigation
 
 ```{toctree}
 installation
 setup
+customizing
 ```

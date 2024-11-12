@@ -8,7 +8,16 @@ The themes need to be installed as a `pip` package. This can be done by running 
 pip install pallets-sphinx-themes
 ```
 
-Afterwards, enable the themes by setting thiese lines in your `conf.py` file:
+You will need to enable to extension for the theme to work properly:
+
+``` python
+extensions = [
+    "pallets_sphinx_themes",
+    ...
+]
+```
+
+Afterwards, enable the themes by setting these lines in your `conf.py` file:
 
 ``` python
 html_theme = "flask"
