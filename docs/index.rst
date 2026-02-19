@@ -1,2 +1,0 @@
-Pallets Sphinx Themes
-=====================

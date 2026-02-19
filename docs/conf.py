@@ -1,11 +1,11 @@
-from pallets_sphinx_themes import get_version
+import importlib.metadata
 
 # Project --------------------------------------------------------------
 
 project = "Pallets-Sphinx-Themes"
-copyright = "2007 Pallets"
-author = "Pallets"
-release, version = get_version("pallets-sphinx-themes")
+version = release = importlib.metadata.version("pallets-sphinx-themes").partition(
+    ".dev"
+)[0]
 
 # General --------------------------------------------------------------
 
@@ -27,6 +27,7 @@ extlinks = {
 }
 intersphinx_mapping = {
     "python": ("https://docs.python.org/3/", None),
+    "sphinx": ("https://sphinx-doc.org", None),
 }
 myst_enable_extensions = [
     "fieldlist",
@@ -36,15 +37,7 @@ myst_heading_anchors = 2
 # HTML -----------------------------------------------------------------
 
 html_theme = "flask"
-html_theme_options = {"index_sidebar_logo": False}
-html_sidebars = {
-    "index": ["project.html", "localtoc.html", "searchbox.html", "ethicalads.html"],
-    "**": ["localtoc.html", "relations.html", "searchbox.html", "ethicalads.html"],
-}
-singlehtml_sidebars = {"index": ["project.html", "localtoc.html", "ethicalads.html"]}
-html_title = f"{project} Documentation ({version})"
 html_copy_source = False
-html_show_sourcelink = False
 html_show_copyright = False
 html_use_index = False
 html_domain_indices = False
