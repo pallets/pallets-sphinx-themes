@@ -11,9 +11,6 @@ from sphinx.application import Sphinx
 from sphinx.builders.dirhtml import DirectoryHTMLBuilder
 from sphinx.errors import ExtensionError
 
-from .theme_check import only_pallets_theme
-from .theme_check import set_is_pallets_theme
-
 
 def setup(app):
     base = os.path.join(os.path.dirname(__file__), "themes")
@@ -45,7 +42,6 @@ def setup(app):
             # Disable the default prefix outside of Read the Docs.
             app.config.notfound_urls_prefix = None
 
-    app.connect("builder-inited", set_is_pallets_theme)
     app.connect("builder-inited", find_base_canonical_url)
     app.connect("builder-inited", add_theme_files)
     app.connect("html-page-context", canonical_url)
@@ -66,7 +62,6 @@ def setup(app):
     return {"version": own_release, "parallel_read_safe": True}
 
 
-@only_pallets_theme()
 def find_base_canonical_url(app: Sphinx) -> None:
     """When building on Read the Docs, build the base canonical URL from the
     environment variable if it's not given in the config. Replace the path with
@@ -81,7 +76,6 @@ def find_base_canonical_url(app: Sphinx) -> None:
         app.config.html_baseurl = f"{parts.scheme}://{parts.netloc}{path}"
 
 
-@only_pallets_theme()
 def add_theme_files(app: Sphinx) -> None:
     # Add the JavaScript for the version warning banner if ``version_banner`` is
     # enabled. On Read the Docs, don't include it for stable or PR builds.
@@ -104,7 +98,6 @@ def add_theme_files(app: Sphinx) -> None:
         )
 
 
-@only_pallets_theme()
 def canonical_url(app: Sphinx, pagename, templatename, context, doctree):
     """Sphinx 1.8 builds a canonical URL if ``html_baseurl`` config is
     set. However, it builds a URL ending with ".html" when using the
@@ -127,7 +120,6 @@ def canonical_url(app: Sphinx, pagename, templatename, context, doctree):
     context["pageurl"] = base + target
 
 
-@only_pallets_theme()
 def skip_internal(app, what, name, obj, skip, options):
     """Skip rendering autodoc when the docstring contains a line with
     only the string `:internal:`.
@@ -138,7 +130,6 @@ def skip_internal(app, what, name, obj, skip, options):
         return True
 
 
-@only_pallets_theme()
 def cut_module_meta(app, what, name, obj, options, lines):
     """Don't render lines that start with ``:copyright:`` or
     ``:license:`` when rendering module autodoc. These lines are useful
