@@ -1,9 +1,4 @@
 @import url("pocoo.css");
-@import url("https://fonts.googleapis.com/css?family=Crimson+Text");
-
-h1, h2, h3, h4, h5, h6, p.admonition-title, div.sphinxsidebar input {
-  font-family: "Crimson Text", "Garamond", "Georgia", serif;
-}
 
 a, a.reference, a.footnote-reference {
   color: #a00;
