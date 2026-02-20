@@ -1,5 +1,21 @@
 @import url("basic.css");
 
+/* -- Atkinson Hyperlegible font definitions ------------------------ */
+
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  src: url("atkinson/AtkinsonHyperlegibleNextVF-Variable.woff2") format("woff2");
+  font-display: block;
+  font-weight: 200 800;
+}
+
+@font-face {
+  font-family: "Atkinson Hyperlegible Mono";
+  src: url("atkinson/AtkinsonHyperlegibleMonoVF-Variable.woff2") format("woff2");
+  font-display: block;
+  font-weight: 200 800;
+}
+
 /* -- page layout --------------------------------------------------- */
 
 html {
@@ -8,7 +24,7 @@ html {
 }
 
 body {
-  font-family: 'Garamond', 'Georgia', serif;
+  font-family: "Atkinson Hyperlegible Next", sans-serif;
   font-size: 17px;
   background-color: #fff;
   color: #3e4349;
@@ -119,6 +135,24 @@ div.footer {
 div.footer a {
   color: #888;
   border-color: #888;
+}
+
+/* more font overrides from basic.css */
+
+div.sphinxsidebar input {
+  font-family: "Atkinson Hyperlegible Next", sans-serif;
+}
+
+.sig {
+  font-family: "Atkinson Hyperlegible Mono", sans-serif;
+}
+
+.guilabel, .menuselection {
+    font-family: "Atkinson Hyperlegible Next", sans-serif;
+}
+
+.viewcode-back {
+  font-family: "Atkinson Hyperlegible Next", sans-serif;
 }
 
 /* -- quick search -------------------------------------------------- */
@@ -325,7 +359,7 @@ rect.highlighted {
 /* -- code displays ------------------------------------------------- */
 
 pre, code {
-  font-family: 'Consolas', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
+  font-family: "Atkinson Hyperlegible Mono", monospace;
   font-size: 0.9em;
 }
 
@@ -494,7 +528,7 @@ table.footnote td {
 }
 
 .sphinx-tabs .ui.menu {
-  font-family: 'Garamond', 'Georgia', serif !important;
+  font-family: "Atkinson Hyperlegible Next", sans-serif !important;
 }
 
 .sphinx-tabs .ui.attached.menu {
