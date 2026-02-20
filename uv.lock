@@ -724,7 +724,7 @@ typing = [
 [package.metadata]
 requires-dist = [
     { name = "packaging" },
-    { name = "sphinx" },
+    { name = "sphinx", specifier = ">=7.3" },
     { name = "sphinx-notfound-page" },
 ]
 
