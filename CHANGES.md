@@ -1,3 +1,11 @@
+## Version 2.6.0
+
+Unreleased
+
+- Remove local workaround to display `^D` in `CliRunner`. Requires
+  Click >= 8.6.0.
+  [pallets/click#3878](https://github.com/pallets/click/pull/3878)
+
 ## Version 2.5.0
 
 Released 2026-02-25

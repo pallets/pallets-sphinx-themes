@@ -35,7 +35,7 @@ jinja = "pallets_sphinx_themes.themes.jinja:JinjaStyle"
 
 [dependency-groups]
 dev = [
-    "click>=8.3.1",
+    "click>=8.6.0.dev",
     "ruff",
     "tox",
     "tox-uv",
@@ -58,7 +58,7 @@ tests = [
     "pytest",
 ]
 typing = [
-    "click>=8.3.1",
+    "click>=8.6.0.dev",
     "mypy",
     "pyright",
     "types-pygments>=2.19.0.20251121",
@@ -82,6 +82,11 @@ exclude = [
 
 [tool.uv]
 default-groups = ["dev", "pre-commit", "tests", "typing"]
+
+# XXX Temporary, until the `^D` echo reaches a Click release: drop this
+# source and pin `click>=8.6.0`. https://github.com/pallets/click/pull/3878
+[tool.uv.sources]
+click = { git = "https://github.com/kdeldycke/click", rev = "f8c5a8efc17d01a9fb10bba961def4c3215ce369" }
 
 [tool.pytest]
 testpaths = ["tests"]

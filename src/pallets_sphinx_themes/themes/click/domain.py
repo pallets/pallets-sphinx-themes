@@ -1,40 +1,15 @@
 import contextlib
 import shlex
 import subprocess
-import sys
 import tempfile
 from functools import partial
 
 import click
 from click.testing import CliRunner
-from click.testing import EchoingStdin
 from docutils import nodes
 from docutils.parsers.rst import Directive
 from docutils.statemachine import ViewList
 from sphinx.domains import Domain
-
-
-class EofEchoingStdin(EchoingStdin):
-    """Like :class:`click.testing.EchoingStdin` but adds a visible
-    ``^D`` in place of the EOT character (``\x04``).
-
-    :meth:`ExampleRunner.invoke` adds ``\x04`` when
-    ``terminate_input=True``.
-    """
-
-    def _echo(self, rv):
-        eof = rv[-1] == b"\x04"[0]
-
-        if eof:
-            rv = rv[:-1]
-
-        if not self._paused:
-            self._output.write(rv)
-
-            if eof:
-                self._output.write(b"^D\n")
-
-        return rv
 
 
 @contextlib.contextmanager
@@ -67,23 +42,6 @@ class ExampleRunner(CliRunner):
     def __init__(self):
         super().__init__(echo_stdin=True)
         self.namespace = {"click": click, "__file__": "dummy.py"}
-
-    @contextlib.contextmanager
-    def isolation(self, *args, **kwargs):
-        iso = super().isolation(*args, **kwargs)
-
-        with iso as streams:
-            try:
-                buffer = sys.stdin.buffer
-            except AttributeError:
-                buffer = sys.stdin
-
-            # FIXME: We need to replace EchoingStdin with our custom
-            # class that outputs "^D". At this point we know sys.stdin
-            # has been patched so it's safe to reassign the class.
-            # Remove this once EchoingStdin is overridable.
-            buffer.__class__ = EofEchoingStdin
-            yield streams
 
     def invoke(
         self,
